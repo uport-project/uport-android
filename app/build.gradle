@@ -1,0 +1,43 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "me.uport.android"
+        minSdkVersion 23
+        targetSdkVersion 27
+        versionCode 1
+        versionName "0.0.$versionCode-alpha"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation(
+            "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+
+            //support libs will be ported to androidx once that is more stable
+            "com.android.support:appcompat-v7:$support_lib_version",
+            "com.android.support:design:$support_lib_version",
+    )
+
+    testImplementation (
+            "junit:junit:$junit_version",
+    )
+
+    androidTestImplementation (
+            "com.android.support.test:runner:$test_runner_version",
+            "com.android.support.test.espresso:espresso-core:$espresso_version",
+    )
+}
