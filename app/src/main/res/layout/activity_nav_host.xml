@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<fragment
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".NavHostActivity"
+    android:id="@+id/navHostFrag"
+    android:name="androidx.navigation.fragment.NavHostFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    app:defaultNavHost="true"
+    app:layout_behavior="@string/bottom_sheet_behavior"
+    app:navGraph="@navigation/mobile_navigation"
+    tools:layout="@layout/dashboard_fragment" />

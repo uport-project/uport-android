@@ -16,6 +16,8 @@ android {
         versionCode 1
         versionName "0.0.$versionCode-alpha"
 
+        vectorDrawables.useSupportLibrary = true
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -55,6 +57,8 @@ dependencies {
             "com.android.support:appcompat-v7:$support_lib_version",
             "com.android.support:support-v4:$support_lib_version",
             "com.android.support:design:$support_lib_version",
+
+            "com.journeyapps:zxing-android-embedded:$zxing_version",
 
             "android.arch.lifecycle:extensions:$lifecycle_version",
             "android.arch.navigation:navigation-fragment:$navigation_version",
