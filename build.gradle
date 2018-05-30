@@ -37,7 +37,7 @@ buildscript {
                 "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version",
                 "org.jetbrains.kotlinx:kotlinx-gradle-serialization-plugin:$kotlin_serialization_version",
 
-                "com.android.tools.build:gradle:3.2.0-alpha15",
+                'com.android.tools.build:gradle:3.2.0-alpha16',
         )
     }
 }
