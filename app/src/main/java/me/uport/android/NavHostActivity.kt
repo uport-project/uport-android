@@ -11,9 +11,18 @@ import kotlinx.android.synthetic.main.activity_nav_host.*
 
 class NavHostActivity : AppCompatActivity() {
 
+    private val navController by lazy { (navHostFrag as NavHostFragment).navController }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nav_host)
+        setSupportActionBar(toolbar)
+
+        NavigationUI.setupActionBarWithNavController(this, navController)
 
     }
+
+    override fun onSupportNavigateUp()
+            = (navHostFrag as NavHostFragment).navController.navigateUp()
+
 }

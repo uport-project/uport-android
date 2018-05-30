@@ -49,11 +49,13 @@ android {
 }
 
 dependencies {
+
     implementation(
             "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
             "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$kotlin_serialization_version",
 
             "com.android.support.constraint:constraint-layout:$constraint_layout_version",
+            "com.android.support:recyclerview-v7:$support_lib_version",
             "com.android.support:appcompat-v7:$support_lib_version",
             "com.android.support:support-v4:$support_lib_version",
             "com.android.support:design:$support_lib_version",
@@ -64,7 +66,6 @@ dependencies {
             "android.arch.navigation:navigation-fragment:$navigation_version",
             "android.arch.navigation:navigation-ui:$navigation_version",
     )
-
 
     testImplementation(
             "junit:junit:$junit_version",
