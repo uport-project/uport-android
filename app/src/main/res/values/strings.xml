@@ -101,4 +101,5 @@
     <string name="verifications_list_lorem_ipsum">Lorem ipsum list of verifications</string>
     <string name="accounts_list_lorem_ipsum">Lorem ipsum list of accounts</string>
     <string name="contacts_list_lorem_ipsum">Lorem ipsum list of contacts</string>
+    <string name="avatar_description">Avatar image</string>
 </resources>
