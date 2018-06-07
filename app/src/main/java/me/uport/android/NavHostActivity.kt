@@ -25,4 +25,6 @@ class NavHostActivity : AppCompatActivity() {
     override fun onSupportNavigateUp()
             = (navHostFrag as NavHostFragment).navController.navigateUp()
 
+
+
 }

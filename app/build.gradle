@@ -67,6 +67,7 @@ dependencies {
             "android.arch.navigation:navigation-ui:$navigation_version",
     )
 
+    implementation 'com.android.support:support-v4:27.1.1'
     testImplementation(
             "junit:junit:$junit_version",
             "com.google.truth:truth:$google_truth_version",

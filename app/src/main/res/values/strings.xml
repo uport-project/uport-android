@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">uPort android</string>
     <string name="large_text">
+        "Lorem ipsum dolor sit amet\n\n"
         "Material is the metaphor.\n\n"
 
         "A material metaphor is the unifying theory of a rationalized space and a system of motion."
@@ -95,4 +96,9 @@
     <string name="notifications_screen_label">Notifications</string>
     <string name="not_implemented">Not implemented</string>
     <string name="notifications">Notifications</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="verifications_list_lorem_ipsum">Lorem ipsum list of verifications</string>
+    <string name="accounts_list_lorem_ipsum">Lorem ipsum list of accounts</string>
+    <string name="contacts_list_lorem_ipsum">Lorem ipsum list of contacts</string>
 </resources>

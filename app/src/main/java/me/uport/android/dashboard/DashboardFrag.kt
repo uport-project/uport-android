@@ -20,7 +20,6 @@ class DashboardFrag : Fragment() {
         return inflater.inflate(R.layout.fragment_dashboard, container, false)
     }
 
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
