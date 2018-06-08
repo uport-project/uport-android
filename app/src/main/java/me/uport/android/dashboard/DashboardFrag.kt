@@ -6,9 +6,7 @@ import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.navigation.fragment.NavHostFragment
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 import me.uport.android.R
@@ -66,6 +64,10 @@ class DashboardFrag : Fragment() {
             // Show 3 total pages.
             return 3
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        inflater?.inflate(R.menu.menu_main, menu)
     }
 
 }

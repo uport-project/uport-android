@@ -80,5 +80,28 @@
         android:name="me.uport.android._dummy.UnimplementedFrag"
         android:label="@string/not_implemented" />
 
+    <fragment
+        android:id="@+id/aboutScreen"
+        android:name="me.uport.android.more.AboutFrag"
+        android:label="@string/title_about" />
 
+    <fragment
+        android:id="@+id/advancedScreen"
+        android:name="me.uport.android.more.AdvancedFrag"
+        android:label="@string/title_advanced" />
+
+    <fragment
+        android:id="@+id/recoveryScreen"
+        android:name="me.uport.android._dummy.UnimplementedFrag"
+        android:label="@string/title_account_recovery" />
+
+    <fragment
+        android:id="@+id/backupScreen"
+        android:name="me.uport.android._dummy.UnimplementedFrag"
+        android:label="@string/title_account_backup" />
+
+    <fragment
+        android:id="@+id/tryUportScreen"
+        android:name="me.uport.android._dummy.UnimplementedFrag"
+        android:label="@string/title_try_uport" />
 </navigation>

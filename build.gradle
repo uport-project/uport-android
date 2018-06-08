@@ -14,7 +14,7 @@ buildscript {
 
         constraint_layout_version = "1.1.0"
         lifecycle_version = "1.1.1"
-        navigation_version = "1.0.0-alpha01"
+        navigation_version = "1.0.0-alpha02"
 
         zxing_version = "3.6.0"
         okhttp_version = "3.10.0"

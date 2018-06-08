@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@id/aboutScreen"
+        android:title="@string/title_about" />
+    <item
+        android:id="@+id/advancedScreen"
+        android:title="@string/title_advanced" />
+
+    <item
+        android:id="@+id/recoveryScreen"
+        android:title="@string/title_account_recovery" />
+
+    <item
+        android:id="@+id/backupScreen"
+        android:title="@string/title_account_backup" />
+
+    <item
+        android:id="@+id/tryUportScreen"
+        android:title="@string/title_try_uport" />
+</menu>
