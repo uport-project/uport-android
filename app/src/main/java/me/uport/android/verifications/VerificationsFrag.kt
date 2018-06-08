@@ -9,14 +9,8 @@ import android.view.ViewGroup
 
 import me.uport.android.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 /**
- * A simple [Fragment] subclass.
- *
+ * TODO: add a recyclerview with Verifications that navigate to VerificationDetails
  */
 class VerificationsFrag : Fragment() {
 

@@ -96,10 +96,16 @@
     <string name="notifications_screen_label">Notifications</string>
     <string name="not_implemented">Not implemented</string>
     <string name="notifications">Notifications</string>
+    <string name="tab_text_1">Verifications</string>
+    <string name="tab_text_2">Accounts</string>
+    <string name="tab_text_3">Contacts</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="verifications_list_lorem_ipsum">Lorem ipsum list of verifications</string>
     <string name="accounts_list_lorem_ipsum">Lorem ipsum list of accounts</string>
     <string name="contacts_list_lorem_ipsum">Lorem ipsum list of contacts</string>
     <string name="avatar_description">Avatar image</string>
+    <string name="title_activity_tabbed">TabbedActivity</string>
+
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>
