@@ -21,7 +21,7 @@ class DashboardFrag : Fragment() {
 
     private lateinit var viewModel: DashboardViewModel
     private val navController by lazy { NavHostFragment.findNavController(this) }
-    private var mSectionsPagerAdapter: SectionsPagerAdapter? = null
+    private var tabPagerAdapter: TabPagerAdapter? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -34,29 +34,23 @@ class DashboardFrag : Fragment() {
         viewModel = ViewModelProviders.of(this).get(DashboardViewModel::class.java)
         // TODO: Use the ViewModel - determine default user, accounts, claims, contacts and bind the appropriate views to the viewmodel
 
-        mSectionsPagerAdapter = SectionsPagerAdapter(fragmentManager!!)
+        tabPagerAdapter = TabPagerAdapter(fragmentManager!!)
 
-        // Set up the ViewPager with the sections adapter.
-        container.adapter = mSectionsPagerAdapter
-
+        container.adapter = tabPagerAdapter
         container.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabs))
         tabs.addOnTabSelectedListener(TabLayout.ViewPagerOnTabSelectedListener(container))
 
-        fabView.setOnClickListener(::navigateToScanner)
-        btnNotifications.setOnClickListener({ v ->
-            navController.navigate(R.id.action_dashboard_to_notifications)
-        })
-    }
-
-    private fun navigateToScanner(v: View) {
-        navController.navigate(R.id.action_dashboard_to_scanner)
+        fab.setOnClickListener({ v -> navController.navigate(R.id.action_dashboard_to_scanner) })
+        profile_container.setOnClickListener({ v -> navController.navigate(R.id.action_dashboard_to_userProfileScreen) })
+        btn_notifications.setOnClickListener({ v -> navController.navigate(R.id.action_dashboard_to_notifications) })
     }
 
     /**
      * A [FragmentPagerAdapter] that returns a fragment corresponding to
      * one of the sections/tabs/pages.
+     * TODO: perhaps replace this with bottom navigation tabs
      */
-    inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+    inner class TabPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
         override fun getItem(position: Int): Fragment {
 

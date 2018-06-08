@@ -2,46 +2,81 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/dashboardFragment">
+    app:startDestination="@id/dashboardScreen">
 
     <fragment
-        android:id="@+id/dashboardFragment"
+        android:id="@+id/dashboardScreen"
         android:name="me.uport.android.dashboard.DashboardFrag"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_dashboard">
         <action
             android:id="@+id/action_dashboard_to_scanner"
-            app:destination="@id/scannerFragment"
+            app:destination="@id/scannerScreen"
             app:launchSingleTop="true"
-            app:popUpTo="@+id/dashboardFragment" />
+            app:popUpTo="@+id/dashboardScreen" />
         <action
             android:id="@+id/action_dashboard_to_notifications"
-            app:destination="@id/notificationListFragment"
+            app:destination="@id/notificationListScreen"
             app:launchSingleTop="true"
-            app:popUpTo="@+id/dashboardFragment" />
+            app:popUpTo="@+id/dashboardScreen" />
+        <action
+            android:id="@+id/action_dashboard_to_userProfileScreen"
+            app:destination="@id/userProfileScreen" />
+        <action
+            android:id="@+id/action_dashboardScreen_to_verificationScreen"
+            app:destination="@id/verificationScreen" />
+        <action
+            android:id="@+id/action_dashboardScreen_to_accountScreen"
+            app:destination="@id/accountScreen" />
+        <action
+            android:id="@+id/action_dashboardScreen_to_contactScreen"
+            app:destination="@id/contactScreen" />
     </fragment>
 
     <fragment
-        android:id="@+id/scannerFragment"
+        android:id="@+id/scannerScreen"
         android:name="me.uport.android.scanner.ScannerFragment"
         android:label="@string/scanner_screen_label">
         <action
             android:id="@+id/action_scanner_cancel"
-            app:destination="@id/dashboardFragment" />
+            app:destination="@id/dashboardScreen" />
     </fragment>
 
     <fragment
-        android:id="@+id/notificationListFragment"
+        android:id="@+id/notificationListScreen"
         android:name="me.uport.android.notifications.NotificationFrag"
         android:label="@string/notifications_screen_label">
         <action
             android:id="@+id/action_notification_list_to_notification_details"
-            app:destination="@id/unimplementedFrag"
-            app:popUpTo="@id/notificationListFragment" />
+            app:destination="@id/unimplementedScreen"
+            app:popUpTo="@id/notificationListScreen" />
     </fragment>
 
     <fragment
-        android:id="@+id/unimplementedFrag"
+        android:id="@+id/userProfileScreen"
+        android:name="me.uport.android.profile.UserProfileFrag"
+        android:label="@string/user_profile_screen_title">
+        <action
+            android:id="@+id/action_profile_to_edit_profile"
+            app:destination="@id/unimplementedScreen"
+            app:popUpTo="@id/userProfileScreen" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/verificationScreen"
+        android:name="me.uport.android._dummy.UnimplementedFrag"
+        android:label="@string/not_implemented" />
+    <fragment
+        android:id="@+id/accountScreen"
+        android:name="me.uport.android._dummy.UnimplementedFrag"
+        android:label="@string/not_implemented" />
+    <fragment
+        android:id="@+id/contactScreen"
+        android:name="me.uport.android._dummy.UnimplementedFrag"
+        android:label="@string/not_implemented" />
+
+    <fragment
+        android:id="@+id/unimplementedScreen"
         android:name="me.uport.android._dummy.UnimplementedFrag"
         android:label="@string/not_implemented" />
 

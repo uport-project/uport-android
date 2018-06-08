@@ -108,4 +108,6 @@
     <string name="title_activity_tabbed">TabbedActivity</string>
 
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="lorem_ipsum_user_name">Lorem Daneel Olivaw</string>
+    <string name="user_profile_screen_title">My Information</string>
 </resources>
