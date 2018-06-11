@@ -58,9 +58,14 @@
         android:label="@string/user_profile_screen_title">
         <action
             android:id="@+id/action_profile_to_edit_profile"
-            app:destination="@id/unimplementedScreen"
+            app:destination="@id/editProfileScreen"
             app:popUpTo="@id/userProfileScreen" />
     </fragment>
+
+    <fragment
+        android:id="@+id/editProfileScreen"
+        android:name="me.uport.android.profile.EditProfileFrag"
+        android:label="@string/edit_profile_screen_title" />
 
     <fragment
         android:id="@+id/verificationScreen"

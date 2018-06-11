@@ -122,4 +122,6 @@
     <string name="title_try_uport">Try uPort</string>
     <string name="action_edit">Edit</string>
     <string name="action_view_profile">View</string>
+    <string name="user_name_hint">type your name</string>
+    <string name="edit_profile_screen_title">Edit profile</string>
 </resources>
