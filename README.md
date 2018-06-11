@@ -7,7 +7,7 @@ This is the place where uPort mobile gets rewritten to native android.
 
 ### Requirements
 
-* Android Studio 3.2 canary 14 or higher
+* Android Studio 3.2 canary 16 or higher
 * android SDK (usually bundled with Android studio) with API 27 downloaded from SDK manager
 
 

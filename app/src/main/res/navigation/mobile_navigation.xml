@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/dashboardScreen">
+
+    <fragment
+        android:id="@+id/dashboardScreen"
+        android:name="me.uport.android.dashboard.DashboardFrag"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_dashboard">
+        <action
+            android:id="@+id/action_dashboard_to_scanner"
+            app:destination="@id/scannerScreen"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/dashboardScreen" />
+        <action
+            android:id="@+id/action_dashboard_to_notifications"
+            app:destination="@id/notificationListScreen"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/dashboardScreen" />
+        <action
+            android:id="@+id/action_dashboard_to_userProfileScreen"
+            app:destination="@id/userProfileScreen" />
+        <action
+            android:id="@+id/action_dashboardScreen_to_verificationScreen"
+            app:destination="@id/verificationScreen" />
+        <action
+            android:id="@+id/action_dashboardScreen_to_accountScreen"
+            app:destination="@id/accountScreen" />
+        <action
+            android:id="@+id/action_dashboardScreen_to_contactScreen"
+            app:destination="@id/contactScreen" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/scannerScreen"
+        android:name="me.uport.android.scanner.ScannerFragment"
+        android:label="@string/scanner_screen_label">
+        <action
+            android:id="@+id/action_scanner_cancel"
+            app:destination="@id/dashboardScreen" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/notificationListScreen"
+        android:name="me.uport.android.notifications.NotificationFrag"
+        android:label="@string/notifications_screen_label">
+        <action
+            android:id="@+id/action_notification_list_to_notification_details"
+            app:destination="@id/unimplementedScreen"
+            app:popUpTo="@id/notificationListScreen" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/userProfileScreen"
+        android:name="me.uport.android.profile.UserProfileFrag"
+        android:label="@string/user_profile_screen_title">
+        <action
+            android:id="@+id/action_profile_to_edit_profile"
+            app:destination="@id/editProfileScreen"
+            app:popUpTo="@id/userProfileScreen" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editProfileScreen"
+        android:name="me.uport.android.profile.EditProfileFrag"
+        android:label="@string/edit_profile_screen_title" />
+
+    <fragment
+        android:id="@+id/verificationScreen"
+        android:name="me.uport.android._dummy.UnimplementedFrag"
+        android:label="@string/not_implemented" />
+    <fragment
+        android:id="@+id/accountScreen"
+        android:name="me.uport.android._dummy.UnimplementedFrag"
+        android:label="@string/not_implemented" />
+    <fragment
+        android:id="@+id/contactScreen"
+        android:name="me.uport.android._dummy.UnimplementedFrag"
+        android:label="@string/not_implemented" />
+
+    <fragment
+        android:id="@+id/unimplementedScreen"
+        android:name="me.uport.android._dummy.UnimplementedFrag"
+        android:label="@string/not_implemented" />
+
+    <fragment
+        android:id="@+id/aboutScreen"
+        android:name="me.uport.android.more.AboutFrag"
+        android:label="@string/title_about" />
+
+    <fragment
+        android:id="@+id/advancedScreen"
+        android:name="me.uport.android.more.AdvancedFrag"
+        android:label="@string/title_advanced" />
+
+    <fragment
+        android:id="@+id/recoveryScreen"
+        android:name="me.uport.android._dummy.UnimplementedFrag"
+        android:label="@string/title_account_recovery" />
+
+    <fragment
+        android:id="@+id/backupScreen"
+        android:name="me.uport.android._dummy.UnimplementedFrag"
+        android:label="@string/title_account_backup" />
+
+    <fragment
+        android:id="@+id/tryUportScreen"
+        android:name="me.uport.android._dummy.UnimplementedFrag"
+        android:label="@string/title_try_uport" />
+</navigation>

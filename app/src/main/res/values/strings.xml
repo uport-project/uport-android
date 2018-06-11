@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">uPort android</string>
     <string name="large_text">
+        "Lorem ipsum dolor sit amet\n\n"
         "Material is the metaphor.\n\n"
 
         "A material metaphor is the unifying theory of a rationalized space and a system of motion."
@@ -90,4 +91,37 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="action_settings">Settings</string>
+    <string name="scanner_screen_label">Scanner</string>
+    <string name="scan_barcode_prompt">Scan QR code</string>
+    <string name="notifications_screen_label">Notifications</string>
+    <string name="not_implemented">Not implemented</string>
+    <string name="notifications">Notifications</string>
+    <string name="tab_text_1">Verifications</string>
+    <string name="tab_text_2">Accounts</string>
+    <string name="tab_text_3">Contacts</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="verifications_list_lorem_ipsum">Lorem ipsum list of verifications</string>
+    <string name="accounts_list_lorem_ipsum">Lorem ipsum list of accounts</string>
+    <string name="contacts_list_lorem_ipsum">Lorem ipsum list of contacts</string>
+    <string name="avatar_description">Avatar image</string>
+    <string name="title_activity_tabbed">TabbedActivity</string>
+
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="lorem_ipsum_user_name">Lorem Daneel Olivaw</string>
+    <string name="user_profile_screen_title">My Information</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_about">About</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_advanced">Advanced</string>
+    <string name="title_account_recovery">Account recovery</string>
+    <string name="title_account_backup">Account backup</string>
+    <string name="title_try_uport">Try uPort</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_view_profile">View</string>
+    <string name="user_name_hint">type your name</string>
+    <string name="edit_profile_screen_title">Edit profile</string>
 </resources>
