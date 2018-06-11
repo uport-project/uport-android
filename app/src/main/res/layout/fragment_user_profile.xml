@@ -21,10 +21,11 @@
     <TextView
         android:id="@+id/profile_name"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:text="Lorem Ipsum R Daneel Olivaw"
+        android:gravity="center_vertical"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
         app:layout_constraintBottom_toBottomOf="@+id/profile_image"
         app:layout_constraintEnd_toEndOf="parent"

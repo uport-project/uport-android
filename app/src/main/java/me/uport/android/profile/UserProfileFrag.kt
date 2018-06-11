@@ -15,7 +15,7 @@ class UserProfileFrag : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.user_profile_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_user_profile, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
