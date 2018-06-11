@@ -5,21 +5,24 @@
     android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NavHostActivity"
-    tools:showIn="@layout/activity_nav_host">
+    android:clipToPadding="false"
+    tools:context=".NavHostActivity">
 
     <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/profile_container"
-        >
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:minHeight="152dp">
+
         <ImageView
             android:id="@+id/profile_image"
             android:layout_width="128dp"
             android:layout_height="128dp"
-            android:layout_margin="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:contentDescription="@string/avatar_description"
             android:src="@android:drawable/ic_menu_myplaces"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,8 +54,7 @@
         <android.support.design.widget.AppBarLayout
             android:id="@+id/appbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <android.support.design.widget.TabLayout
                 android:id="@+id/tabs"

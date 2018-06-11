@@ -120,4 +120,6 @@
     <string name="title_account_recovery">Account recovery</string>
     <string name="title_account_backup">Account backup</string>
     <string name="title_try_uport">Try uPort</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_view_profile">View</string>
 </resources>

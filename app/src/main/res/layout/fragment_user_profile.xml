@@ -6,31 +6,39 @@
     android:layout_height="match_parent"
     tools:context=".NavHostActivity">
 
-    <ImageView
-        android:id="@+id/profile_image"
-        android:layout_width="128dp"
-        android:layout_height="128dp"
-        android:layout_margin="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="@string/avatar_description"
-        android:src="@android:drawable/ic_menu_myplaces"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/profile_name"
-        android:layout_width="0dp"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/profile_container"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="Lorem Ipsum R Daneel Olivaw"
-        android:gravity="center_vertical"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-        app:layout_constraintBottom_toBottomOf="@+id/profile_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/profile_image"
-        app:layout_constraintTop_toTopOf="@+id/profile_image" />
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:minHeight="152dp">
+
+        <ImageView
+            android:id="@+id/profile_image"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/avatar_description"
+            android:src="@android:drawable/ic_menu_myplaces"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/profile_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/lorem_ipsum_user_name"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+            app:layout_constraintBottom_toBottomOf="@+id/profile_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/profile_image"
+            app:layout_constraintTop_toTopOf="@+id/profile_image" />
+    </android.support.constraint.ConstraintLayout>
 
     <ImageButton
         android:id="@+id/share_qr_code"
@@ -41,7 +49,7 @@
         android:background="#0000"
         android:tint="?attr/colorAccent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_image"
+        app:layout_constraintTop_toBottomOf="@+id/profile_container"
         app:srcCompat="@drawable/ic_qr_code" />
 
     <ImageButton
@@ -53,7 +61,7 @@
         android:background="#0000"
         android:tint="?attr/colorAccent"
         app:layout_constraintStart_toEndOf="@+id/share_qr_code"
-        app:layout_constraintTop_toBottomOf="@+id/profile_image"
+        app:layout_constraintTop_toBottomOf="@+id/profile_container"
         app:srcCompat="@android:drawable/ic_menu_share" />
 
     <LinearLayout
