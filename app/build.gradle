@@ -67,8 +67,6 @@ dependencies {
             "android.arch.navigation:navigation-ui:$navigation_version",
     )
 
-    implementation 'com.android.support:support-v4:27.1.1'
-    implementation 'android.arch.lifecycle:extensions:1.1.1'
     testImplementation(
             "junit:junit:$junit_version",
             "com.google.truth:truth:$google_truth_version",
@@ -78,6 +76,8 @@ dependencies {
 
     androidTestImplementation(
             "com.android.support.test.espresso:espresso-core:$espresso_version",
+            "com.android.support.test.espresso:espresso-contrib:$espresso_version",
             "com.android.support.test:runner:$test_runner_version",
+            "com.android.support.test:rules:$test_runner_version",
     )
 }
