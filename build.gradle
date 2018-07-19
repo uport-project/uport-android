@@ -2,19 +2,21 @@
 
 buildscript {
     ext {
-        kotlin_version = "1.2.41"
-        kotlin_serialization_version = "0.5.0"
+        kotlin_version = "1.2.50"
+        kotlin_serialization_version = "0.5.1"
         build_tools_version = "27.0.3"
         compile_sdk_version = 27
         target_sdk_version = compile_sdk_version
-        min_sdk_version = 19
+        min_sdk_version = 21
 
-        play_services_version = "15.0.0"
         support_lib_version = "27.1.1"
 
-        constraint_layout_version = "1.1.0"
+        constraint_layout_version = "1.1.2"
         lifecycle_version = "1.1.1"
-        navigation_version = "1.0.0-alpha02"
+        navigation_version = "1.0.0-alpha03"
+
+        uport_signer_version = "0.2.0"
+        uport_sdk_version = "0.1.0"
 
         zxing_version = "3.6.0"
         okhttp_version = "3.10.0"
@@ -37,7 +39,7 @@ buildscript {
                 "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version",
                 "org.jetbrains.kotlinx:kotlinx-gradle-serialization-plugin:$kotlin_serialization_version",
 
-                'com.android.tools.build:gradle:3.2.0-alpha17',
+                'com.android.tools.build:gradle:3.3.0-alpha03',
         )
     }
 }
@@ -47,6 +49,7 @@ allprojects {
         google()
         jcenter()
         maven { url "https://kotlin.bintray.com/kotlinx" }
+        maven { url 'https://jitpack.io' }
     }
 }
 

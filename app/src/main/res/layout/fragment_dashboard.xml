@@ -14,7 +14,10 @@
         android:layout_height="0dp"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
-        android:minHeight="152dp">
+        android:minHeight="152dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/profile_image"

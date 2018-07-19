@@ -12,7 +12,9 @@
         android:layout_height="0dp"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
-        android:minHeight="152dp">
+        android:minHeight="152dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/profile_image"
@@ -68,29 +70,30 @@
         android:id="@+id/profile_attributes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginStart="16dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/share_qr_code"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        >
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/share_qr_code">
 
         <TextView
             android:id="@+id/profile_attr_1"
-            android:text="Location:\nLorem ipsum Trantor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:gravity="center_vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:text="Location:\nLorem ipsum Trantor" />
+
         <TextView
             android:id="@+id/profile_attr_2"
-            android:text="email:\nfoundation@mailinator.com"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:gravity="center_vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:text="email:\nfoundation@mailinator.com" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
