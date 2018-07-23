@@ -75,6 +75,7 @@ dependencies {
             "com.google.truth:truth:$google_truth_version",
             "org.mockito:mockito-inline:$mockito_version",
             "com.nhaarman:mockito-kotlin:$mockito_kotlin_version",
+            "org.robolectric:robolectric:$robolectric_version",
     )
 
     androidTestImplementation(

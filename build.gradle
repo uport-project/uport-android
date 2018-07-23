@@ -25,6 +25,7 @@ buildscript {
         google_truth_version = "0.40"
         mockito_version = "2.18.3"
         mockito_kotlin_version = "1.5.0"
+        robolectric_version = "4.0-alpha-2"
 
         test_runner_version = "1.0.2"
         espresso_version = "3.0.2"

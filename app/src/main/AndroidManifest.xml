@@ -4,6 +4,7 @@
     package="me.uport.android">
 
     <application
+        android:name=".MainApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"

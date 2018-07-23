@@ -17,15 +17,16 @@
 
 package me.uport.android
 
-import org.junit.Test
+import android.app.Application
+import me.uport.sdk.Uport
 
-import org.junit.Assert.*
+class MainApplication : Application() {
 
-class ApplicationTest {
+    override fun onCreate() {
+        super.onCreate()
 
-    @Test
-    fun `application class exists`() {
-        MainApplication.onCreate()
+        val config = Uport.Configuration().setApplicationContext(this)
+        Uport.initialize(config)
+
     }
-
 }
