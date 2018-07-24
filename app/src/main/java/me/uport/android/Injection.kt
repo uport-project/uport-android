@@ -17,15 +17,19 @@
 
 package me.uport.android
 
-import android.app.Application
-import org.koin.android.ext.android.startKoin
+import me.uport.android.onboarding.Onboarding
+import me.uport.sdk.Uport
+import org.koin.android.ext.koin.androidApplication
+import org.koin.dsl.module.applicationContext
 
-class MainApplication : Application() {
-
-    override fun onCreate() {
-        super.onCreate()
-
-       startKoin(coreApp)
-
+val coreModule = applicationContext {
+    bean { Uport.Configuration().setApplicationContext(androidApplication())}
+    bean {
+        Uport.initialize(get())
+        Uport
     }
+    bean { Onboarding(androidApplication(), get()) }
+
 }
+
+val coreApp = listOf(coreModule)

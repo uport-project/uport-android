@@ -17,15 +17,20 @@
 
 package me.uport.android
 
-import android.app.Application
-import org.koin.android.ext.android.startKoin
+import me.uport.android.fakes.prepareMockApplication
+import org.junit.Test
+import org.koin.android.ext.koin.with
+import org.koin.standalone.StandAloneContext.startKoin
+import org.koin.test.KoinTest
+import org.koin.test.dryRun
 
-class MainApplication : Application() {
+class DependencyDryRun : KoinTest {
 
-    override fun onCreate() {
-        super.onCreate()
+    @Test
+    fun `should do a dry run`() {
 
-       startKoin(coreApp)
+        startKoin(coreApp) with prepareMockApplication()
 
+        dryRun()
     }
 }

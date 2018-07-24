@@ -19,8 +19,9 @@ package me.uport.android.onboarding
 
 import android.content.Context
 import com.nhaarman.mockito_kotlin.any
+import com.nhaarman.mockito_kotlin.spy
 import com.nhaarman.mockito_kotlin.whenever
-import me.uport.android.fakes.InMemorySharedPrefs
+import me.uport.android.fakes.inMemoryPrefs
 import me.uport.android.onboarding.Onboarding.Companion.HAS_ACCEPTED_TOS
 import me.uport.sdk.Uport
 import me.uport.sdk.identity.Account
@@ -31,29 +32,23 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
-import org.mockito.Spy
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class OnboardingTest {
-
-    private val prefs = InMemorySharedPrefs()
+class OnboardingStateTest {
 
     @Mock
     private lateinit var context: Context
 
-    @Spy
-    private val uportSDK = Uport
-
     @Before
     fun runBeforeEveryTest() {
         MockitoAnnotations.initMocks(this)
-        whenever(context.getSharedPreferences(any(), any())).thenReturn(prefs)
+        whenever(context.getSharedPreferences(any(), any())).thenReturn(inMemoryPrefs)
     }
 
     @Test
     fun `onboarding state is BLANK when user hasn't accepted TOS`() {
-        prefs.edit().remove(HAS_ACCEPTED_TOS).apply()
+        inMemoryPrefs.edit().remove(HAS_ACCEPTED_TOS).apply()
         assertEquals(Onboarding.State.BLANK, Onboarding(context).getState())
     }
 
@@ -68,9 +63,12 @@ class OnboardingTest {
 
     @Test
     fun `onboarding is final after uport default account exists`() {
-        whenever(uportSDK.defaultAccount).thenReturn(Account.blank)
 
-        val tested = Onboarding(context, uportSDK).apply { markTosAccepted() }
+        val uportSDKMock = spy<Uport>()
+        whenever(uportSDKMock.defaultAccount).thenReturn(Account.blank)
+
+
+        val tested = Onboarding(context, uportSDKMock).apply { markTosAccepted() }
 
         assertEquals(Onboarding.State.DEFAULT_ACCOUNT_EXISTS, tested.getState())
 

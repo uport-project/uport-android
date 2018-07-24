@@ -15,17 +15,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package me.uport.android
+package me.uport.android.fakes
 
 import android.app.Application
-import org.koin.android.ext.android.startKoin
+import com.nhaarman.mockito_kotlin.any
+import com.nhaarman.mockito_kotlin.mock
+import com.nhaarman.mockito_kotlin.whenever
+import me.uport.android.MainApplication
 
-class MainApplication : Application() {
+val inMemoryPrefs = InMemorySharedPrefs()
 
-    override fun onCreate() {
-        super.onCreate()
+fun prepareMockApplication(): Application {
+    val mockApp = mock<MainApplication>()
+    whenever(mockApp.applicationContext).thenReturn(mockApp)
+    whenever(mockApp.getSharedPreferences(any(), any())).thenReturn(inMemoryPrefs)
 
-       startKoin(coreApp)
-
-    }
+    return mockApp
 }
