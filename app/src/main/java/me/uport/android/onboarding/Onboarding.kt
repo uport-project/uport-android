@@ -26,7 +26,7 @@ import org.koin.standalone.inject
 
 class Onboarding(private val uportSDK: Uport = Uport) : KoinComponent {
 
-    private val prefs : SharedPreferences by inject(ONBOARDING_PREFS)
+    private val prefs: SharedPreferences by inject(ONBOARDING_PREFS)
 
     fun getState(): State {
         var state = State.BLANK
@@ -46,14 +46,19 @@ class Onboarding(private val uportSDK: Uport = Uport) : KoinComponent {
 
     fun hasAcceptedTOS(): Boolean = prefs.getBoolean(HAS_ACCEPTED_TOS, false)
 
-    fun markTosAccepted() {
-        prefs.edit().putBoolean(HAS_ACCEPTED_TOS, true).apply()
+    fun markTosAccepted(accepted: Boolean = true) {
+        prefs.edit().putBoolean(HAS_ACCEPTED_TOS, accepted).apply()
     }
 
     fun hasDefaultAccount(): Boolean = (uportSDK.defaultAccount != null)
 
     fun canShowDashboard(): Boolean {
         return getState().ordinal >= READY_TO_USE.ordinal
+    }
+
+    fun clearUser() {
+        markTosAccepted(false)
+//        uportSDK.deleteAccount() //not implemented yet
     }
 
     enum class State {

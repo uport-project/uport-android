@@ -124,4 +124,8 @@
     <string name="action_view_profile">View</string>
     <string name="user_name_hint">type your name</string>
     <string name="edit_profile_screen_title">Edit profile</string>
+    <string name="title_terms_of_service">Terms of Service</string>
+    <string name="title_mobile_identity">Mobile Identity</string>
+    <string name="title_onboarding_progress">Wrapping up</string>
+    <string name="title_recover_your_identity">Recover Identity</string>
 </resources>

@@ -107,7 +107,7 @@ class NavHostActivityTest {
 
     }
 
-    fun clickOnTab(tabText: String) {
+    private fun clickOnTab(tabText: String) {
         val matcher = allOf(withText(tabText),
                 isDescendantOfA(withId(R.id.tabs)))
         onView(matcher).perform(click())

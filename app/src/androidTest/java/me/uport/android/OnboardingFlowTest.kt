@@ -17,28 +17,39 @@
 
 package me.uport.android
 
+import android.support.test.espresso.Espresso.onView
+import android.support.test.espresso.assertion.ViewAssertions.matches
+import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
+import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
-import junit.framework.Assert.fail
-import me.uport.android.onboarding.OnboardingActivity
+import me.uport.android.onboarding.Onboarding
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.koin.standalone.inject
+import org.koin.test.KoinTest
 
 @RunWith(AndroidJUnit4::class)
-class OnboardingFlowTest {
+class OnboardingFlowTest : KoinTest {
 
     @JvmField
     @Rule
-    val activity = ActivityTestRule(OnboardingActivity::class.java)
+    val activityRule = ActivityTestRule(NavHostActivity::class.java)
 
     @Before
     fun run_before_each_test() {
+
     }
+
 
     @Test
     fun application_startup_with_blank_state_leads_to_onboarding_screen() {
-        fail("TODO")
+
+        val onboarding: Onboarding by inject()
+        onboarding.clearUser()
+
+        onView(withId(R.id.onboarding_nav_host_frag)).check(matches(isDisplayed()))
     }
 }

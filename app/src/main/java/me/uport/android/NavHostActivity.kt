@@ -37,11 +37,6 @@ class NavHostActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (!onboarding.canShowDashboard()) {
-            //todo: start onboarding flow
-            finish()
-        }
-
         setContentView(R.layout.activity_nav_host)
         setSupportActionBar(toolbar)
 
@@ -49,6 +44,10 @@ class NavHostActivity : AppCompatActivity() {
 
         NavigationUI.setupWithNavController(nav_view, navController)
 
+        if (!onboarding.canShowDashboard()) {
+            navController.navigate(R.id.go_to_onboarding)
+            finish()
+        }
     }
 
     override fun onSupportNavigateUp() = NavigationUI.navigateUp(drawer_layout, navController)
