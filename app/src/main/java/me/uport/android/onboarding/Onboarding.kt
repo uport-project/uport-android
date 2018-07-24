@@ -17,15 +17,16 @@
 
 package me.uport.android.onboarding
 
-import android.content.Context
-import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
 import android.support.annotation.VisibleForTesting
 import me.uport.sdk.Uport
+import org.koin.standalone.KoinComponent
 import java.lang.reflect.Modifier.PRIVATE
+import org.koin.standalone.inject
 
-class Onboarding(context: Context, private val uportSDK: Uport = Uport) {
+class Onboarding(private val uportSDK: Uport = Uport) : KoinComponent {
 
-    private val prefs = context.getSharedPreferences(ONBOARDING_PREFS_FILE, MODE_PRIVATE)
+    private val prefs : SharedPreferences by inject(ONBOARDING_PREFS)
 
     fun getState(): State {
         var state = State.BLANK
@@ -69,7 +70,7 @@ class Onboarding(context: Context, private val uportSDK: Uport = Uport) {
     companion object {
 
         @VisibleForTesting(otherwise = PRIVATE)
-        const val ONBOARDING_PREFS_FILE = "onboarding"
+        const val ONBOARDING_PREFS = "onboarding"
 
         @VisibleForTesting(otherwise = PRIVATE)
         const val HAS_ACCEPTED_TOS = "tos_accepted"

@@ -17,44 +17,56 @@
 
 package me.uport.android.onboarding
 
-import android.content.Context
-import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.spy
 import com.nhaarman.mockito_kotlin.whenever
+import me.uport.android.coreApp
 import me.uport.android.fakes.inMemoryPrefs
+import me.uport.android.fakes.prepareMockApplication
 import me.uport.android.onboarding.Onboarding.Companion.HAS_ACCEPTED_TOS
 import me.uport.sdk.Uport
 import me.uport.sdk.identity.Account
+import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mock
-import org.mockito.MockitoAnnotations
+import org.koin.android.ext.koin.with
+import org.koin.dsl.module.applicationContext
+import org.koin.standalone.StandAloneContext.closeKoin
+import org.koin.standalone.StandAloneContext.loadKoinModules
+import org.koin.standalone.StandAloneContext.startKoin
+import org.koin.standalone.inject
+import org.koin.test.KoinTest
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class OnboardingStateTest {
-
-    @Mock
-    private lateinit var context: Context
+class OnboardingStateTest : KoinTest {
 
     @Before
-    fun runBeforeEveryTest() {
-        MockitoAnnotations.initMocks(this)
-        whenever(context.getSharedPreferences(any(), any())).thenReturn(inMemoryPrefs)
+    fun `run before every test`() {
+        startKoin(coreApp) with prepareMockApplication()
+
+        loadKoinModules(listOf(applicationContext {
+            bean<Any> { inMemoryPrefs }
+        }))
+    }
+
+    @After
+    fun `run after every test`() {
+        closeKoin()
     }
 
     @Test
     fun `onboarding state is BLANK when user hasn't accepted TOS`() {
         inMemoryPrefs.edit().remove(HAS_ACCEPTED_TOS).apply()
-        assertEquals(Onboarding.State.BLANK, Onboarding(context).getState())
+        val tested: Onboarding by inject()
+        assertEquals(Onboarding.State.BLANK, tested.getState())
     }
 
     @Test
     fun `onboarding state is updated when user accepts TOS`() {
-        val tested = Onboarding(context)
+        val tested: Onboarding by inject()
 
         tested.markTosAccepted()
 
@@ -64,15 +76,19 @@ class OnboardingStateTest {
     @Test
     fun `onboarding is final after uport default account exists`() {
 
-        val uportSDKMock = spy<Uport>()
-        whenever(uportSDKMock.defaultAccount).thenReturn(Account.blank)
+        loadKoinModules(listOf(applicationContext {
+            val uportSDKMock = spy<Uport>()
+            whenever(uportSDKMock.defaultAccount).thenReturn(Account.blank)
+            bean { uportSDKMock }
+        }))
 
-
-        val tested = Onboarding(context, uportSDKMock).apply { markTosAccepted() }
+        val tested: Onboarding by inject()
+        tested.apply { markTosAccepted() }
 
         assertEquals(Onboarding.State.DEFAULT_ACCOUNT_EXISTS, tested.getState())
 
         assertTrue(tested.canShowDashboard())
 
     }
+
 }

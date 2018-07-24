@@ -105,5 +105,7 @@ dependencies {
             "com.android.support.test.espresso:espresso-contrib:$espresso_version",
             "com.android.support.test:runner:$test_runner_version",
             "com.android.support.test:rules:$test_runner_version",
+            "com.nhaarman:mockito-kotlin:$mockito_kotlin_version",
+            "org.koin:koin-test:$koin_version",
     )
 }
