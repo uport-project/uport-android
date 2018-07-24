@@ -23,7 +23,7 @@ import android.support.annotation.VisibleForTesting
 import me.uport.sdk.Uport
 import java.lang.reflect.Modifier.PRIVATE
 
-class Onboarding(context: Context, private val uport: Uport = Uport) {
+class Onboarding(context: Context, private val uportSDK: Uport = Uport) {
 
     private val prefs = context.getSharedPreferences(ONBOARDING_PREFS_FILE, MODE_PRIVATE)
 
@@ -49,7 +49,7 @@ class Onboarding(context: Context, private val uport: Uport = Uport) {
         prefs.edit().putBoolean(HAS_ACCEPTED_TOS, true).apply()
     }
 
-    fun hasDefaultAccount(): Boolean = (uport.defaultAccount != null)
+    fun hasDefaultAccount(): Boolean = (uportSDK.defaultAccount != null)
 
     fun canShowDashboard(): Boolean {
         return getState().ordinal >= READY_TO_USE.ordinal
