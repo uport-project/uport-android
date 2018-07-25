@@ -17,17 +17,12 @@
 
 package me.uport.android.onboarding
 
-import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import androidx.navigation.Navigation.findNavController
-import me.uport.android.R
+import android.arch.lifecycle.ViewModel
+import me.uport.sdk.Uport
 
-class OnboardingActivity : AppCompatActivity() {
+class OnboardingProgressViewModel(
+        val uportSDK : Uport
+) : ViewModel() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_onboarding)
-    }
 
-    override fun onSupportNavigateUp() = findNavController(this, R.id.onboarding_nav_host_frag).navigateUp()
 }

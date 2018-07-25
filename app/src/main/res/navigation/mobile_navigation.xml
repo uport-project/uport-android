@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2018. uPort
   ~
   ~ This program is free software: you can redistribute it and/or modify
@@ -19,21 +18,19 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/dashboardScreen"
     android:id="@+id/main_navigation_flow"
-    >
+    app:startDestination="@id/dashboardScreen">
 
     <activity
         android:id="@+id/onboarding_flow"
-        android:name="me.uport.android.onboarding.OnboardingActivity"
-        />
+        android:name="me.uport.android.onboarding.OnboardingActivity" />
 
     <action
         android:id="@+id/go_to_onboarding"
+        app:clearTask="true"
         app:destination="@+id/onboarding_flow"
         app:launchSingleTop="true"
-        app:clearTask="true"
-        />
+        app:popUpTo="@id/onboarding_flow" />
 
     <fragment
         android:id="@+id/dashboardScreen"

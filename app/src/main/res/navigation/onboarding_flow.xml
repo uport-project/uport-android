@@ -18,11 +18,25 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/onboarding_flow"
-    app:startDestination="@id/tosScreen">
+    app:startDestination="@id/createOrRecoverScreen">
 
     <action
         android:id="@+id/go_to_dashboard"
-        app:destination="@+id/main_navigation_flow" />
+        app:clearTask="true"
+        app:destination="@id/dashboardFlow"
+        app:launchSingleTop="true"
+        app:popUpTo="@id/dashboardFlow" />
+
+    <activity
+        android:id="@+id/dashboardFlow"
+        android:name="me.uport.android.NavHostActivity" />
+
+    <action
+        android:id="@+id/go_to_onboarding"
+        app:clearTask="true"
+        app:destination="@+id/onboarding_flow"
+        app:launchSingleTop="true"
+        app:popUpTo="@id/onboarding_flow" />
 
     <fragment
         android:id="@+id/tosScreen"
@@ -35,10 +49,11 @@
 
     <fragment
         android:id="@+id/createOrRecoverScreen"
-        android:name="me.uport.android._dummy.UnimplementedFrag"
+        android:name="me.uport.android.onboarding.CreateOrRecoverFrag"
         android:label="@string/title_mobile_identity">
         <action
             android:id="@+id/action_createOrRecoverScreen_to_recoverScreen"
+            app:popUpTo="@id/createOrRecoverScreen"
             app:destination="@id/recoverScreen" />
         <action
             android:id="@+id/action_createOrRecoverScreen_to_onboardingProgress"
@@ -56,6 +71,6 @@
 
     <fragment
         android:id="@+id/onboardingProgress"
-        android:name="me.uport.android._dummy.UnimplementedFrag"
+        android:name="me.uport.android.onboarding.OnboardingProgressFrag"
         android:label="@string/title_onboarding_progress" />
 </navigation>

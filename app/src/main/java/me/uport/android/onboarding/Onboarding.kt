@@ -44,7 +44,8 @@ class Onboarding(private val uportSDK: Uport = Uport) : KoinComponent {
         return state
     }
 
-    fun hasAcceptedTOS(): Boolean = prefs.getBoolean(HAS_ACCEPTED_TOS, false)
+    //TODO: return the true value
+    fun hasAcceptedTOS(): Boolean = true //prefs.getBoolean(HAS_ACCEPTED_TOS, false)
 
     fun markTosAccepted(accepted: Boolean = true) {
         prefs.edit().putBoolean(HAS_ACCEPTED_TOS, accepted).apply()
@@ -81,7 +82,7 @@ class Onboarding(private val uportSDK: Uport = Uport) : KoinComponent {
         const val HAS_ACCEPTED_TOS = "tos_accepted"
 
         /**
-         * used to determine if the current onboarding state is enough to proceed to dashboard
+         * used to determine if the current onboarding state is good enough to proceed to dashboard
          */
         val READY_TO_USE = State.DEFAULT_ACCOUNT_EXISTS
     }

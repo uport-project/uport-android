@@ -101,6 +101,7 @@
     <string name="tab_text_3">Contacts</string>
 
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="filler_text">Lorem ipsum dolor sit amet</string>
     <string name="verifications_list_lorem_ipsum">Lorem ipsum list of verifications</string>
     <string name="accounts_list_lorem_ipsum">Lorem ipsum list of accounts</string>
     <string name="contacts_list_lorem_ipsum">Lorem ipsum list of contacts</string>
@@ -108,11 +109,9 @@
     <string name="title_activity_tabbed">TabbedActivity</string>
 
     <string name="section_format">Hello World from section: %1$d</string>
-    <string name="lorem_ipsum_user_name">Lorem Daneel Olivaw</string>
+    <string name="lorem_ipsum_user_name">Lorem R Daneel Olivaw</string>
     <string name="user_profile_screen_title">My Information</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_about">About</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -128,4 +127,9 @@
     <string name="title_mobile_identity">Mobile Identity</string>
     <string name="title_onboarding_progress">Wrapping up</string>
     <string name="title_recover_your_identity">Recover Identity</string>
+    <string name="btn_recover_identity">Recover Identity</string>
+    <string name="btn_create_identity">Create Identity</string>
+    <string name="identity_creation_success">Congratulations Your identity has been created</string>
+    <string name="identity_creation_error">There was an error.</string>
+    <string name="btn_continue">Continue</string>
 </resources>
