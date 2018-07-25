@@ -24,10 +24,15 @@ import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import me.uport.android.onboarding.Onboarding
+import me.uport.sdk.Uport
+import me.uport.sdk.identity.Account
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.koin.dsl.module.applicationContext
+import org.koin.standalone.StandAloneContext
+import org.koin.standalone.StandAloneContext.loadKoinModules
 import org.koin.standalone.inject
 import org.koin.test.KoinTest
 
@@ -36,10 +41,10 @@ class OnboardingFlowTest : KoinTest {
 
     @JvmField
     @Rule
-    val activityRule = ActivityTestRule(NavHostActivity::class.java)
+    val activityRule = ActivityTestRule(NavHostActivity::class.java, true, false)
 
     @Before
-    fun run_before_each_test() {
+    fun run_before_every_test() {
 
     }
 
@@ -47,8 +52,18 @@ class OnboardingFlowTest : KoinTest {
     @Test
     fun application_startup_with_blank_state_leads_to_onboarding_screen() {
 
+        val mockUport = Uport
+        //this should not be so easily done, but we'll have to work with it until deleteAccount is implemented in SDK ( https://github.com/uport-project/uport-android-sdk/issues/10 )
+        mockUport.defaultAccount = null
+        loadKoinModules(listOf(applicationContext {
+            bean { mockUport }
+        }))
+
         val onboarding: Onboarding by inject()
+
         onboarding.clearUser()
+
+        activityRule.launchActivity(null)
 
         onView(withId(R.id.onboarding_nav_host_frag)).check(matches(isDisplayed()))
     }

@@ -54,7 +54,7 @@ class CreateOrRecoverFrag : Fragment() {
                     Toast.makeText(context, "error : $err", Toast.LENGTH_SHORT).show()
                     return@createAccount
                 }
-                //workaround for a bug in the sdk
+                //workaround for a bug in the sdk (https://github.com/uport-project/uport-android-sdk/issues/11)
                 uportSDK.defaultAccount = acc
                 navController.navigate(R.id.action_createOrRecoverScreen_to_onboardingProgress)
             }

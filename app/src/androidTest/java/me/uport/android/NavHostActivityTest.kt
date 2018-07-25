@@ -30,10 +30,15 @@ import android.support.test.rule.ActivityTestRule
 import android.support.test.rule.GrantPermissionRule
 import android.support.test.runner.AndroidJUnit4
 import android.support.v7.widget.RecyclerView.ViewHolder
+import me.uport.sdk.Uport
+import me.uport.sdk.identity.Account
 import org.hamcrest.Matchers.allOf
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.koin.dsl.module.applicationContext
+import org.koin.standalone.StandAloneContext.loadKoinModules
 
 
 @LargeTest
@@ -42,7 +47,7 @@ class NavHostActivityTest {
 
     @Rule
     @JvmField
-    var mActivityTestRule = ActivityTestRule(NavHostActivity::class.java)
+    var activityRule = ActivityTestRule(NavHostActivity::class.java, true, false)
 
     @Rule
     @JvmField
@@ -50,8 +55,19 @@ class NavHostActivityTest {
             GrantPermissionRule.grant(
                     "android.permission.CAMERA")
 
+    @Before
+    fun run_before_every_test() {
+        val mockUport = Uport
+        mockUport.defaultAccount = Account.blank
+        loadKoinModules(listOf(applicationContext {
+            bean { mockUport }
+        }))
+    }
+
     @Test
     fun walkThroughSomeAppScreens() {
+
+        activityRule.launchActivity(null)
 
         clickOnTab("Verifications")
         clickOnTab("Accounts")

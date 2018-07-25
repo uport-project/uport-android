@@ -20,6 +20,7 @@ package me.uport.android
 import me.uport.android.fakes.prepareMockApplication
 import org.junit.Test
 import org.koin.android.ext.koin.with
+import org.koin.standalone.StandAloneContext.closeKoin
 import org.koin.standalone.StandAloneContext.startKoin
 import org.koin.test.KoinTest
 import org.koin.test.dryRun
@@ -32,5 +33,7 @@ class DependencyDryRun : KoinTest {
         startKoin(coreApp) with prepareMockApplication()
 
         dryRun()
+
+        closeKoin()
     }
 }
