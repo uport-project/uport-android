@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2018. uPort
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/onboarding_flow"
+    app:startDestination="@id/createOrRecoverScreen">
+
+    <action
+        android:id="@+id/go_to_dashboard"
+        app:clearTask="true"
+        app:destination="@id/dashboardFlow"
+        app:launchSingleTop="true"
+        app:popUpTo="@id/dashboardFlow" />
+
+    <activity
+        android:id="@+id/dashboardFlow"
+        android:name="me.uport.android.NavHostActivity" />
+
+    <action
+        android:id="@+id/go_to_onboarding"
+        app:clearTask="true"
+        app:destination="@+id/onboarding_flow"
+        app:launchSingleTop="true"
+        app:popUpTo="@id/onboarding_flow" />
+
+    <fragment
+        android:id="@+id/tosScreen"
+        android:name="me.uport.android._dummy.UnimplementedFrag"
+        android:label="@string/title_terms_of_service">
+        <action
+            android:id="@+id/action_tosScreen_to_createOrRecoverScreen"
+            app:destination="@id/createOrRecoverScreen" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/createOrRecoverScreen"
+        android:name="me.uport.android.onboarding.CreateOrRecoverFrag"
+        android:label="@string/title_mobile_identity">
+        <action
+            android:id="@+id/action_createOrRecoverScreen_to_recoverScreen"
+            app:popUpTo="@id/createOrRecoverScreen"
+            app:destination="@id/recoverScreen" />
+        <action
+            android:id="@+id/action_createOrRecoverScreen_to_onboardingProgress"
+            app:destination="@id/onboardingProgress" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/recoverScreen"
+        android:name="me.uport.android._dummy.UnimplementedFrag"
+        android:label="@string/title_recover_your_identity">
+        <action
+            android:id="@+id/action_recoverScreen_to_onboardingProgress"
+            app:destination="@id/onboardingProgress" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/onboardingProgress"
+        android:name="me.uport.android.onboarding.OnboardingProgressFrag"
+        android:label="@string/title_onboarding_progress" />
+</navigation>

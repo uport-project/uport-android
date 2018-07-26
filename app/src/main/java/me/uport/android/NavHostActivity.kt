@@ -19,7 +19,6 @@ package me.uport.android
 
 import android.os.Bundle
 import android.support.design.widget.NavigationView
-import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
@@ -27,13 +26,17 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import kotlinx.android.synthetic.main.activity_nav_host.*
+import me.uport.android.onboarding.Onboarding
+import org.koin.android.ext.android.inject
 
 class NavHostActivity : AppCompatActivity() {
 
     private val navController by lazy { (nav_host_frag as NavHostFragment).navController }
+    private val onboarding: Onboarding by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_nav_host)
         setSupportActionBar(toolbar)
 
@@ -41,6 +44,10 @@ class NavHostActivity : AppCompatActivity() {
 
         NavigationUI.setupWithNavController(nav_view, navController)
 
+        if (!onboarding.canShowDashboard()) {
+            navController.navigate(R.id.go_to_onboarding)
+            finish()
+        }
     }
 
     override fun onSupportNavigateUp() = NavigationUI.navigateUp(drawer_layout, navController)
