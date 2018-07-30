@@ -20,7 +20,7 @@ package me.uport.android.onboarding
 import android.app.Activity
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
-import android.databinding.ObservableField
+import android.databinding.ObservableBoolean
 import android.databinding.ObservableInt
 import android.view.View
 import androidx.navigation.Navigation
@@ -34,7 +34,8 @@ class OnboardingProgressViewModel(
         private val uportSDK: Uport
 ) : AndroidViewModel(app) {
 
-    val isLoading = ObservableField<Boolean>()
+    val isLoading = ObservableBoolean()
+    val isCancellable = ObservableBoolean()
     val progressText = ObservableInt()
     val titleText = ObservableInt().apply { set(R.string.title_mobile_identity) }
 
@@ -43,7 +44,9 @@ class OnboardingProgressViewModel(
             try {
                 isLoading.set(true)
                 progressText.set(R.string.identity_creation_in_progress)
-                val acc = uportSDK.createAccount(Networks.rinkeby, seed)
+
+                uportSDK.createAccount(Networks.rinkeby, seed)
+
                 isLoading.set(false)
                 progressText.set(R.string.identity_creation_success)
             } catch (err: Exception) {
@@ -58,5 +61,10 @@ class OnboardingProgressViewModel(
         val navController = Navigation.findNavController(v)
         navController.navigate(R.id.go_to_dashboard)
         (v.context as Activity).finish()
+    }
+
+    fun goBack(v: View) {
+        val navController = Navigation.findNavController(v)
+        navController.popBackStack()
     }
 }

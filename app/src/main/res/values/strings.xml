@@ -137,4 +137,5 @@
     <string name="identity_creation_in_progress">Your identity is being created</string>
 
     <string name="content_desc_uport_logo">uport logo</string>
+    <string name="btn_cancel">Cancel</string>
 </resources>
