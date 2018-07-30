@@ -21,6 +21,7 @@ import android.app.Activity
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.databinding.ObservableField
+import android.databinding.ObservableInt
 import android.view.View
 import androidx.navigation.Navigation
 import kotlinx.coroutines.experimental.launch
@@ -29,27 +30,29 @@ import me.uport.sdk.Uport
 import me.uport.sdk.core.Networks
 
 class OnboardingProgressViewModel(
-        private val app: Application,
+        app: Application,
         private val uportSDK: Uport
 ) : AndroidViewModel(app) {
 
-    fun requestNewAccount(seed : String? = null) {
+    val isLoading = ObservableField<Boolean>()
+    val progressText = ObservableInt()
+    val titleText = ObservableInt().apply { set(R.string.title_mobile_identity) }
+
+    fun requestNewAccount(seed: String? = null) {
         launch {
             try {
                 isLoading.set(true)
-                progressText.set(app.getString(R.string.identity_creation_in_progress))
+                progressText.set(R.string.identity_creation_in_progress)
                 val acc = uportSDK.createAccount(Networks.rinkeby, seed)
                 isLoading.set(false)
-                progressText.set(app.getString(R.string.identity_creation_success))
+                progressText.set(R.string.identity_creation_success)
             } catch (err: Exception) {
                 isLoading.set(false)
-                progressText.set(app.getString(R.string.identity_creation_error))
+                progressText.set(R.string.identity_creation_error)
             }
         }
     }
 
-    val isLoading = ObservableField<Boolean>()
-    val progressText = ObservableField<String>()
 
     fun goToDashboard(v: View) {
         val navController = Navigation.findNavController(v)
