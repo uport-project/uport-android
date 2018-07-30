@@ -18,7 +18,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/onboarding_flow"
-    app:startDestination="@id/createOrRecoverScreen">
+    app:startDestination="@id/tosScreen">
 
     <action
         android:id="@+id/go_to_dashboard"
@@ -31,16 +31,9 @@
         android:id="@+id/dashboardFlow"
         android:name="me.uport.android.NavHostActivity" />
 
-    <action
-        android:id="@+id/go_to_onboarding"
-        app:clearTask="true"
-        app:destination="@+id/onboarding_flow"
-        app:launchSingleTop="true"
-        app:popUpTo="@id/onboarding_flow" />
-
     <fragment
         android:id="@+id/tosScreen"
-        android:name="me.uport.android._dummy.UnimplementedFrag"
+        android:name="me.uport.android.onboarding.TosFrag"
         android:label="@string/title_terms_of_service">
         <action
             android:id="@+id/action_tosScreen_to_createOrRecoverScreen"
@@ -62,7 +55,7 @@
 
     <fragment
         android:id="@+id/recoverScreen"
-        android:name="me.uport.android._dummy.UnimplementedFrag"
+        android:name="me.uport.android.onboarding.RecoverSeedFrag"
         android:label="@string/title_recover_your_identity">
         <action
             android:id="@+id/action_recoverScreen_to_onboardingProgress"
