@@ -45,7 +45,7 @@ class Onboarding(private val uportSDK: Uport = Uport) : KoinComponent {
     }
 
     //TODO: return the true value
-    fun hasAcceptedTOS(): Boolean = true //prefs.getBoolean(HAS_ACCEPTED_TOS, false)
+    fun hasAcceptedTOS(): Boolean = prefs.getBoolean(HAS_ACCEPTED_TOS, false)
 
     fun markTosAccepted(accepted: Boolean = true) {
         prefs.edit().putBoolean(HAS_ACCEPTED_TOS, accepted).apply()
