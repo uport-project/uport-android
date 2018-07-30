@@ -16,11 +16,11 @@
   -->
 
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="72dp"
-    android:height="72dp"
-    android:viewportWidth="1440"
-    android:viewportHeight="1440">
+    android:width="32dp"
+    android:height="32dp"
+    android:viewportWidth="8.467"
+    android:viewportHeight="8.467">
     <path
-        android:fillColor="#FF5C50CA"
+        android:fillColor="#5c50ca"
         android:pathData="@string/uport_logo_vector_path" />
 </vector>

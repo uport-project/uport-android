@@ -22,7 +22,17 @@
     android:layout_height="match_parent"
     tools:context=".onboarding.CreateOrRecoverFrag">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="96dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/content_desc_uport_logo"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/uport_logo_with_text_purple" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -33,6 +43,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/btn_create"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/btn_create_identity"
+        app:layout_constraintBottom_toTopOf="@+id/btn_recover"
+        app:layout_constraintEnd_toEndOf="@+id/btn_recover"
+        app:layout_constraintStart_toStartOf="@+id/btn_recover" />
 
     <Button
         android:id="@+id/btn_recover"
@@ -46,29 +68,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btn_create"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="@string/btn_create_identity"
-        app:layout_constraintBottom_toTopOf="@+id/btn_recover"
-        app:layout_constraintEnd_toEndOf="@+id/btn_recover"
-        app:layout_constraintStart_toStartOf="@+id/btn_recover" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:contentDescription="@string/content_desc_uport_logo"
-        android:src="@drawable/uport_logo_with_text_purple"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
