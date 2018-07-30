@@ -23,14 +23,10 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment
 import kotlinx.android.synthetic.main.fragment_create_or_recover.*
-
 import me.uport.android.R
-import me.uport.sdk.Uport
-import me.uport.sdk.core.Networks
-import org.koin.android.ext.android.inject
+import org.koin.android.architecture.ext.sharedViewModel
 
 /**
  * Shows the option to create a new identity or recover an existing one
@@ -39,7 +35,7 @@ import org.koin.android.ext.android.inject
 class CreateOrRecoverFrag : Fragment() {
 
     private val navController by lazy { NavHostFragment.findNavController(this) }
-    private val uportSDK: Uport by inject()
+    private val viewModel : OnboardingProgressViewModel by sharedViewModel()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_create_or_recover, container, false)
@@ -49,15 +45,8 @@ class CreateOrRecoverFrag : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         btn_create.setOnClickListener {
-            uportSDK.createAccount(Networks.rinkeby) { err, acc ->
-                if (err != null) {
-                    Toast.makeText(context, "error : $err", Toast.LENGTH_SHORT).show()
-                    return@createAccount
-                }
-                //workaround for a bug in the sdk (https://github.com/uport-project/uport-android-sdk/issues/11)
-                uportSDK.defaultAccount = acc
-                navController.navigate(R.id.action_createOrRecoverScreen_to_onboardingProgress)
-            }
+            viewModel.requestNewAccount()
+            navController.navigate(R.id.action_createOrRecoverScreen_to_onboardingProgress)
         }
 
         btn_recover.setOnClickListener {

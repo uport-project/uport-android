@@ -109,3 +109,9 @@ dependencies {
             "org.koin:koin-test:$koin_version",
     )
 }
+
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
+}

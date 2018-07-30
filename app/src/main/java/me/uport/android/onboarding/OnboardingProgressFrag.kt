@@ -17,33 +17,31 @@
 
 package me.uport.android.onboarding
 
+import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.NavHostFragment
-import kotlinx.android.synthetic.main.onboarding_progress_fragment.*
 import me.uport.android.R
-import org.koin.android.ext.android.inject
+import me.uport.android.databinding.FragmentOnboardingProgressBinding
+import org.koin.android.architecture.ext.sharedViewModel
 
 class OnboardingProgressFrag : Fragment() {
 
-    private val navController by lazy { NavHostFragment.findNavController(this) }
-    private val viewModel: OnboardingProgressViewModel by inject()
+    private val viewModel: OnboardingProgressViewModel by sharedViewModel()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.onboarding_progress_fragment, container, false)
+        val binding: FragmentOnboardingProgressBinding = DataBindingUtil.inflate(
+                inflater,
+                R.layout.fragment_onboarding_progress,
+                container,
+                false)
+        binding.model = viewModel
+
+        return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        btn_continue.setOnClickListener {
-            navController.navigate(R.id.go_to_dashboard)
-            activity?.finish()
-        }
-    }
 
 }
