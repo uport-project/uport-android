@@ -59,6 +59,8 @@ class Onboarding(private val uportSDK: Uport = Uport) : KoinComponent {
 
     fun clearUser() {
         markTosAccepted(false)
+        //TODO: this should not be so easily done, but we'll have to work with it until deleteAccount is implemented in SDK ( https://github.com/uport-project/uport-android-sdk/issues/10 )
+        uportSDK.defaultAccount = null
 //        uportSDK.deleteAccount() //not implemented yet
     }
 

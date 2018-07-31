@@ -30,6 +30,7 @@ import android.support.test.rule.ActivityTestRule
 import android.support.test.rule.GrantPermissionRule
 import android.support.test.runner.AndroidJUnit4
 import android.support.v7.widget.RecyclerView.ViewHolder
+import me.uport.android.onboarding.Onboarding
 import me.uport.sdk.Uport
 import me.uport.sdk.identity.Account
 import org.hamcrest.Matchers.allOf
@@ -37,13 +38,12 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.koin.dsl.module.applicationContext
-import org.koin.standalone.StandAloneContext.loadKoinModules
-
+import org.koin.standalone.inject
+import org.koin.test.KoinTest
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class NavHostActivityTest {
+class NavHostActivityTest : KoinTest {
 
     @Rule
     @JvmField
@@ -57,17 +57,17 @@ class NavHostActivityTest {
 
     @Before
     fun run_before_every_test() {
-        val mockUport = Uport
-        mockUport.defaultAccount = Account.blank
-        loadKoinModules(listOf(applicationContext {
-            bean { mockUport }
-        }))
+
+        val uport: Uport by inject()
+        val onboarding: Onboarding by inject()
+
+        uport.defaultAccount = Account.blank.copy(deviceAddress = "0xsomething")
+        onboarding.markTosAccepted(true)
+        activityRule.launchActivity(null)
     }
 
     @Test
     fun walkThroughSomeAppScreens() {
-
-        activityRule.launchActivity(null)
 
         clickOnTab("Verifications")
         clickOnTab("Accounts")

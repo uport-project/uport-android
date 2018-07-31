@@ -72,5 +72,8 @@
         android:name="me.uport.android.onboarding.OnboardingProgressFrag"
         android:label="@string/title_onboarding_progress"
         tools:layout="@layout/fragment_onboarding_progress">
+        <action
+            android:id="@+id/action_onboardingProgress_to_dashboardFlow"
+            app:destination="@id/dashboardFlow" />
     </fragment>
 </navigation>

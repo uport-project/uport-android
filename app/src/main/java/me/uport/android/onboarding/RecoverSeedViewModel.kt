@@ -32,6 +32,7 @@ class RecoverSeedViewModel : ViewModel() {
             error.set("")
         } else {
             isPhraseComplete.set(false)
+            //FIXME: localize error text
             error.set("phrase incomplete")
         }
         return isPhraseComplete.get()
