@@ -141,5 +141,9 @@
     <string name="btn_accept">Accept</string>
     <string name="title_tos">Terms and Conditions</string>
     <string name="tos_modified_at">Last modified May 24, 2018</string>
+    <string name="hint_enter_12_word_recovery_phrase">Enter 12 word recovery phrase</string>
+    <string name="title_enter_phrase">Enter recovery phrase</string>
+    <string name="btn_next">Next</string>
+    <string name="recovery_instructions">To recover your account you will need to enter the 12 words of your recovery seed phrase in the order you received them.</string>
 
 </resources>

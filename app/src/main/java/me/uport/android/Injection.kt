@@ -21,6 +21,7 @@ import android.content.Context.MODE_PRIVATE
 import me.uport.android.onboarding.Onboarding
 import me.uport.android.onboarding.Onboarding.Companion.ONBOARDING_PREFS
 import me.uport.android.onboarding.OnboardingProgressViewModel
+import me.uport.android.onboarding.RecoverSeedViewModel
 import me.uport.sdk.Uport
 import org.koin.android.architecture.ext.viewModel
 import org.koin.android.ext.koin.androidApplication
@@ -36,6 +37,7 @@ val uportSDK = applicationContext {
 
 val onboardingModule = applicationContext {
     viewModel { OnboardingProgressViewModel(androidApplication(), get()) }
+    viewModel { RecoverSeedViewModel() }
 }
 
 val coreModule = applicationContext {

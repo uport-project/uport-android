@@ -17,8 +17,29 @@
 
 package me.uport.android.onboarding
 
-import android.arch.lifecycle.ViewModel;
+import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.ViewModel
+import android.databinding.ObservableBoolean
+import android.databinding.ObservableField
+import com.uport.sdk.signer.UportHDSigner
 
 class RecoverSeedViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+
+    fun processPhrase(phrase: String) : Boolean {
+        //TODO: create a more versatile validator. It needs to support trimming, splitting by non-alpha-characters, caps, check for N=12 words, identify an erroneous word and provide suggestions
+        if (UportHDSigner().validateMnemonic(phrase)) {
+            isPhraseComplete.set(true)
+            error.set("")
+        } else {
+            isPhraseComplete.set(false)
+            error.set("phrase incomplete")
+        }
+        return isPhraseComplete.get()
+    }
+
+    val phrase = MutableLiveData<String>()
+    val error = ObservableField<String>()
+    val suggestedWords = MutableLiveData<List<String>>()
+
+    val isPhraseComplete = ObservableBoolean()
 }

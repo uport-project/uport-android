@@ -17,28 +17,71 @@
 
 package me.uport.android.onboarding
 
-import android.arch.lifecycle.ViewModelProviders
+import android.arch.lifecycle.Observer
+import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.text.InputType
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import android.view.inputmethod.EditorInfo
+import androidx.navigation.fragment.NavHostFragment
 import me.uport.android.R
+import me.uport.android.databinding.FragmentRecoverSeedBinding
+import org.koin.android.architecture.ext.sharedViewModel
+import org.koin.android.architecture.ext.viewModel
 
 class RecoverSeedFrag : Fragment() {
 
-    private lateinit var viewModel: RecoverSeedViewModel
+    private val navController by lazy { NavHostFragment.findNavController(this) }
+    private val recoveryModel: RecoverSeedViewModel by viewModel()
+    private val onboardingModel: OnboardingProgressViewModel by sharedViewModel()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_recover_seed, container, false)
+        val binding: FragmentRecoverSeedBinding = DataBindingUtil.inflate(
+                inflater,
+                R.layout.fragment_recover_seed,
+                container,
+                false)
+
+        binding.model = recoveryModel
+        recoveryModel.phrase.observe(this, Observer<String> {
+            recoveryModel.processPhrase(it ?: "")
+        })
+
+        binding.btnNext.setOnClickListener {
+            checkPhraseAndNavigate()
+        }
+
+        binding.phraseEdit.editText?.apply {
+            setOnEditorActionListener { _, _, _ ->
+                checkPhraseAndNavigate()
+            }
+            setOnKeyListener { _, keyCode, event ->
+                if (event.action == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_ENTER) {
+                    checkPhraseAndNavigate()
+                } else {
+                    false
+                }
+            }
+            imeOptions = EditorInfo.IME_ACTION_NEXT
+            setRawInputType(InputType.TYPE_CLASS_TEXT)
+        }
+
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(RecoverSeedViewModel::class.java)
-        // TODO: Use the ViewModel
+    private fun checkPhraseAndNavigate(): Boolean {
+        return if (recoveryModel.isPhraseComplete.get()) {
+            onboardingModel.requestNewAccount(recoveryModel.phrase.value)
+            navController.navigate(R.id.action_recoverScreen_to_onboardingProgress)
+            true
+        } else {
+            false
+        }
     }
 
 }

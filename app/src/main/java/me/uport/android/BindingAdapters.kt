@@ -22,6 +22,7 @@ import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.support.annotation.DrawableRes
 import android.support.annotation.StringRes
+import android.support.design.widget.TextInputLayout
 import android.widget.ImageView
 import android.widget.TextView
 
@@ -42,3 +43,8 @@ fun ImageView.setImageRes(@DrawableRes resource: Int) = setImageResource(resourc
 
 @BindingAdapter("android:text")
 fun TextView.setStringResource(@StringRes res: Int) = setText(res)
+
+@BindingAdapter("errorText")
+fun TextInputLayout.setErrorText(err: String?) {
+    this.error = err ?: ""
+}
