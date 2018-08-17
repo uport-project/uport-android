@@ -30,7 +30,9 @@
             android:screenOrientation="fullSensor"
             tools:replace="screenOrientation" />
 
-        <activity android:name=".onboarding.OnboardingActivity" />
+        <activity android:name=".onboarding.OnboardingActivity"
+            android:windowSoftInputMode="adjustResize"
+            />
 
     </application>
 

@@ -20,7 +20,10 @@ package me.uport.android
 import android.content.Context.MODE_PRIVATE
 import me.uport.android.onboarding.Onboarding
 import me.uport.android.onboarding.Onboarding.Companion.ONBOARDING_PREFS
+import me.uport.android.onboarding.OnboardingProgressViewModel
+import me.uport.android.onboarding.RecoverSeedViewModel
 import me.uport.sdk.Uport
+import org.koin.android.architecture.ext.viewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module.applicationContext
 
@@ -32,6 +35,11 @@ val uportSDK = applicationContext {
     }
 }
 
+val onboardingModule = applicationContext {
+    viewModel { OnboardingProgressViewModel(androidApplication(), get()) }
+    viewModel { RecoverSeedViewModel() }
+}
+
 val coreModule = applicationContext {
 
     bean(ONBOARDING_PREFS) { androidApplication().getSharedPreferences(ONBOARDING_PREFS, MODE_PRIVATE) }
@@ -39,4 +47,4 @@ val coreModule = applicationContext {
     bean { Onboarding(get()) }
 }
 
-val coreApp = listOf(coreModule, uportSDK)
+val coreApp = listOf(coreModule, uportSDK, onboardingModule)

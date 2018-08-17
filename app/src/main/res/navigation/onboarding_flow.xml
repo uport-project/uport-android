@@ -17,8 +17,9 @@
 
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/onboarding_flow"
-    app:startDestination="@id/createOrRecoverScreen">
+    app:startDestination="@id/tosScreen">
 
     <action
         android:id="@+id/go_to_dashboard"
@@ -29,19 +30,14 @@
 
     <activity
         android:id="@+id/dashboardFlow"
-        android:name="me.uport.android.NavHostActivity" />
-
-    <action
-        android:id="@+id/go_to_onboarding"
-        app:clearTask="true"
-        app:destination="@+id/onboarding_flow"
-        app:launchSingleTop="true"
-        app:popUpTo="@id/onboarding_flow" />
+        android:name="me.uport.android.NavHostActivity"
+        tools:layout="@layout/fragment_dashboard"/>
 
     <fragment
         android:id="@+id/tosScreen"
-        android:name="me.uport.android._dummy.UnimplementedFrag"
-        android:label="@string/title_terms_of_service">
+        android:name="me.uport.android.onboarding.TosFrag"
+        android:label="@string/title_terms_of_service"
+        tools:layout="@layout/fragment_tos">
         <action
             android:id="@+id/action_tosScreen_to_createOrRecoverScreen"
             app:destination="@id/createOrRecoverScreen" />
@@ -50,11 +46,12 @@
     <fragment
         android:id="@+id/createOrRecoverScreen"
         android:name="me.uport.android.onboarding.CreateOrRecoverFrag"
-        android:label="@string/title_mobile_identity">
+        android:label="@string/title_mobile_identity"
+        tools:layout="@layout/fragment_create_or_recover">
         <action
             android:id="@+id/action_createOrRecoverScreen_to_recoverScreen"
-            app:popUpTo="@id/createOrRecoverScreen"
-            app:destination="@id/recoverScreen" />
+            app:destination="@id/recoverScreen"
+            app:popUpTo="@id/createOrRecoverScreen" />
         <action
             android:id="@+id/action_createOrRecoverScreen_to_onboardingProgress"
             app:destination="@id/onboardingProgress" />
@@ -62,8 +59,9 @@
 
     <fragment
         android:id="@+id/recoverScreen"
-        android:name="me.uport.android._dummy.UnimplementedFrag"
-        android:label="@string/title_recover_your_identity">
+        android:name="me.uport.android.onboarding.RecoverSeedFrag"
+        android:label="@string/title_recover_your_identity"
+        tools:layout="@layout/fragment_recover_seed">
         <action
             android:id="@+id/action_recoverScreen_to_onboardingProgress"
             app:destination="@id/onboardingProgress" />
@@ -72,5 +70,10 @@
     <fragment
         android:id="@+id/onboardingProgress"
         android:name="me.uport.android.onboarding.OnboardingProgressFrag"
-        android:label="@string/title_onboarding_progress" />
+        android:label="@string/title_onboarding_progress"
+        tools:layout="@layout/fragment_onboarding_progress">
+        <action
+            android:id="@+id/action_onboardingProgress_to_dashboardFlow"
+            app:destination="@id/dashboardFlow" />
+    </fragment>
 </navigation>

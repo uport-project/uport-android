@@ -18,40 +18,49 @@
 package me.uport.android.onboarding
 
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.NavHostFragment
-import kotlinx.android.synthetic.main.fragment_create_or_recover.*
+import kotlinx.android.synthetic.main.fragment_tos.*
 import me.uport.android.R
-import org.koin.android.architecture.ext.sharedViewModel
+import org.koin.android.ext.android.inject
+import java.io.InputStreamReader
+
 
 /**
- * Shows the option to create a new identity or recover an existing one
+ * A simple [Fragment] subclass.
  *
  */
-class CreateOrRecoverFrag : Fragment() {
+class TosFrag : Fragment() {
 
     private val navController by lazy { NavHostFragment.findNavController(this) }
-    private val viewModel : OnboardingProgressViewModel by sharedViewModel()
+    val onboarding: Onboarding by inject()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_create_or_recover, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_tos, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        btn_create.setOnClickListener {
-            viewModel.requestNewAccount()
-            navController.navigate(R.id.action_createOrRecoverScreen_to_onboardingProgress)
-        }
-
-        btn_recover.setOnClickListener {
-            navController.navigate(R.id.action_createOrRecoverScreen_to_recoverScreen)
+        tos_text.text = readFromAssets(view.context, "tos.txt")
+        btn_accept.setOnClickListener {
+            onboarding.markTosAccepted()
+            navController.navigate(R.id.action_tosScreen_to_createOrRecoverScreen)
         }
     }
+
+    private fun readFromAssets(context: Context, filename: String): String {
+        val reader = InputStreamReader(context.assets.open(filename))
+        val fullText = reader.readText()
+        reader.close()
+        return fullText
+    }
+
 
 }

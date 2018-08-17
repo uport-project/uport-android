@@ -57,13 +57,12 @@ class OnboardingStateTest : KoinTest {
         closeKoin()
     }
 
-// FIXME: uncomment for onboarding screens
-//    @Test
-//    fun `onboarding state is BLANK when user hasn't accepted TOS`() {
-//        inMemoryPrefs.edit().remove(HAS_ACCEPTED_TOS).apply()
-//        val tested: Onboarding by inject()
-//        assertEquals(Onboarding.State.BLANK, tested.getState())
-//    }
+    @Test
+    fun `onboarding state is BLANK when user hasn't accepted TOS`() {
+        inMemoryPrefs.edit().remove(HAS_ACCEPTED_TOS).apply()
+        val tested: Onboarding by inject()
+        assertEquals(Onboarding.State.BLANK, tested.getState())
+    }
 
     @Test
     fun `onboarding state is updated when user accepts TOS`() {
