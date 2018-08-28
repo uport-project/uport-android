@@ -78,7 +78,6 @@ dependencies {
             "com.android.support:support-v4:$support_lib_version",
             "com.android.support:design:$support_lib_version",
 
-            "com.github.uport-project:uport-android-signer:$uport_signer_version",
             "com.github.uport-project:uport-android-sdk:$uport_sdk_version",
 
             "com.journeyapps:zxing-android-embedded:$zxing_version",
