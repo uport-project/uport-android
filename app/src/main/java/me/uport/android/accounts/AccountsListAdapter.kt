@@ -49,7 +49,7 @@ class AccountsListAdapter(private val itemClickListener: ItemClickListener<Accou
 
         with(holder) {
             containerView.tag = account
-            titleView.text = account.publicAddress
+            titleView.text = account.deviceAddress
 //            icon.text = resolveIcon(account)
         }
     }
