@@ -14,7 +14,7 @@ buildscript {
 
         constraint_layout_version = "1.1.2"
         lifecycle_version = "1.1.1"
-        navigation_version = "1.0.0-alpha03"
+        navigation_version = "1.0.0-alpha05"
 
         koin_version = "0.9.3"
 

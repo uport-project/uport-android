@@ -18,6 +18,8 @@
 package me.uport.android
 
 import android.content.Context.MODE_PRIVATE
+import me.uport.android.accounts.AccountsViewModel
+import me.uport.android.dashboard.DashboardViewModel
 import me.uport.android.onboarding.Onboarding
 import me.uport.android.onboarding.Onboarding.Companion.ONBOARDING_PREFS
 import me.uport.android.onboarding.OnboardingProgressViewModel
@@ -40,11 +42,17 @@ val onboardingModule = applicationContext {
     viewModel { RecoverSeedViewModel() }
 }
 
+val dashboardModule = applicationContext {
+    viewModel { DashboardViewModel() }
+    viewModel { AccountsViewModel(get()) }
+}
+
 val coreModule = applicationContext {
 
     bean(ONBOARDING_PREFS) { androidApplication().getSharedPreferences(ONBOARDING_PREFS, MODE_PRIVATE) }
 
     bean { Onboarding(get()) }
+
 }
 
-val coreApp = listOf(coreModule, uportSDK, onboardingModule)
+val coreApp = listOf(coreModule, uportSDK, onboardingModule, dashboardModule)
