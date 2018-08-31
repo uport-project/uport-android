@@ -32,6 +32,15 @@
         app:launchSingleTop="true"
         app:popUpTo="@id/onboarding_flow" />
 
+    <action
+        android:id="@+id/action_view_account_details"
+        app:destination="@id/unimplementedScreen"
+        app:popUpTo="@id/dashboardScreen">
+        <argument
+            android:name="account_handle"
+            app:argType="string" />
+    </action>
+
     <fragment
         android:id="@+id/dashboardScreen"
         android:name="me.uport.android.dashboard.DashboardFrag"
@@ -55,7 +64,7 @@
             app:destination="@id/verificationScreen" />
         <action
             android:id="@+id/action_dashboardScreen_to_accountScreen"
-            app:destination="@id/accountScreen" />
+            app:destination="@id/accountListScreen" />
         <action
             android:id="@+id/action_dashboardScreen_to_contactScreen"
             app:destination="@id/contactScreen" />
@@ -99,10 +108,12 @@
         android:id="@+id/verificationScreen"
         android:name="me.uport.android._dummy.UnimplementedFrag"
         android:label="@string/not_implemented" />
+
     <fragment
-        android:id="@+id/accountScreen"
-        android:name="me.uport.android._dummy.UnimplementedFrag"
-        android:label="@string/not_implemented" />
+        android:id="@+id/accountListScreen"
+        android:name="me.uport.android.accounts.AccountsFrag"
+        tools:label="Accounts" />
+
     <fragment
         android:id="@+id/contactScreen"
         android:name="me.uport.android._dummy.UnimplementedFrag"

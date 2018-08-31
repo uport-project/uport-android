@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/accountList"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".contacts.ContactsFrag">
-
-    <!-- TODO: add accounts list -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/accounts_list_lorem_ipsum" />
-
-</FrameLayout>
+    android:background="@color/white226"
+    app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+    tools:context=".accounts.AccountsFrag"
+    tools:listitem="@layout/list_item_account" />
