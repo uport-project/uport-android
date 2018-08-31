@@ -31,7 +31,7 @@
     <activity
         android:id="@+id/dashboardFlow"
         android:name="me.uport.android.NavHostActivity"
-        tools:layout="@layout/fragment_dashboard"/>
+        tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/tosScreen"

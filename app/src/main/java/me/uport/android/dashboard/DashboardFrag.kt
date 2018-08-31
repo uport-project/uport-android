@@ -17,7 +17,6 @@
 
 package me.uport.android.dashboard
 
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
@@ -31,10 +30,11 @@ import me.uport.android._dummy.UnimplementedFrag
 import me.uport.android.accounts.AccountsFrag
 import me.uport.android.contacts.ContactsFrag
 import me.uport.android.verifications.VerificationsFrag
+import org.koin.android.architecture.ext.viewModel
 
 class DashboardFrag : Fragment() {
 
-    private lateinit var viewModel: DashboardViewModel
+    private val viewModel: DashboardViewModel by viewModel()
     private val navController by lazy { NavHostFragment.findNavController(this) }
     private var tabPagerAdapter: TabPagerAdapter? = null
 
@@ -48,21 +48,19 @@ class DashboardFrag : Fragment() {
         return inflater.inflate(R.layout.fragment_dashboard, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        viewModel = ViewModelProviders.of(this).get(DashboardViewModel::class.java)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         // TODO: Use the ViewModel - determine default user, accounts, claims, contacts and bind the appropriate views to the viewmodel
 
-        tabPagerAdapter = TabPagerAdapter(fragmentManager!!)
+        tabPagerAdapter = TabPagerAdapter(childFragmentManager)
 
         container.adapter = tabPagerAdapter
         container.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabs))
         tabs.addOnTabSelectedListener(TabLayout.ViewPagerOnTabSelectedListener(container))
 
-        fab.setOnClickListener({ v -> navController.navigate(R.id.action_dashboard_to_scanner) })
-        profile_container.setOnClickListener({ v -> navController.navigate(R.id.action_dashboard_to_userProfileScreen) })
-        btn_notifications.setOnClickListener({ v -> navController.navigate(R.id.action_dashboard_to_notifications) })
+        fab.setOnClickListener { v -> navController.navigate(R.id.action_dashboard_to_scanner) }
+        profile_container.setOnClickListener { v -> navController.navigate(R.id.action_dashboard_to_userProfileScreen) }
+        btn_notifications.setOnClickListener { v -> navController.navigate(R.id.action_dashboard_to_notifications) }
     }
 
     /**
@@ -73,7 +71,6 @@ class DashboardFrag : Fragment() {
     inner class TabPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
         override fun getItem(position: Int): Fragment {
-
             return when (position) {
                 0 -> VerificationsFrag()
                 1 -> AccountsFrag()
