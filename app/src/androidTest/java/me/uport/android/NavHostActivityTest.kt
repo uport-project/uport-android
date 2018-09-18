@@ -34,6 +34,7 @@ import me.uport.android.onboarding.Onboarding
 import me.uport.sdk.Uport
 import me.uport.sdk.identity.Account
 import org.hamcrest.Matchers.allOf
+import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -64,6 +65,12 @@ class NavHostActivityTest : KoinTest {
         uport.defaultAccount = Account.blank.copy(deviceAddress = "0xsomething")
         onboarding.markTosAccepted(true)
         activityRule.launchActivity(null)
+    }
+
+    @After
+    fun run_after_every_test() {
+        val uPort by inject<Uport>()
+        uPort.defaultAccount?.let { uPort.deleteAccount(it) }
     }
 
     @Test
