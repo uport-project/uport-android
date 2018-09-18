@@ -29,6 +29,11 @@ import me.uport.android.R
 import me.uport.android.interactors.ItemClickListener
 import me.uport.sdk.identity.Account
 import org.koin.android.architecture.ext.viewModel
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context.CLIPBOARD_SERVICE
+import android.widget.Toast
+
 
 /**
  * A fragment representing a list of [Account]s.
@@ -60,6 +65,12 @@ class AccountsFrag : Fragment(), ItemClickListener<Account> {
             putString(ACCOUNT_HANDLE, item.handle)
         }
         navController.navigate(R.id.action_view_account_details, params)
+
+        val clipboard = context?.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+        val clip = ClipData.newPlainText("address", item.deviceAddress)
+        clipboard.primaryClip = clip
+
+        Toast.makeText(context, "address copied to clipboard", Toast.LENGTH_SHORT).show()
     }
 
     companion object {
