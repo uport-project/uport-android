@@ -21,6 +21,7 @@ package me.uport.android
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.Espresso.pressBack
 import android.support.test.espresso.action.ViewActions.click
+import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.contrib.DrawerActions
 import android.support.test.espresso.contrib.NavigationViewActions
 import android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
@@ -78,6 +79,10 @@ class NavHostActivityTest : KoinTest {
 
         clickOnTab("Verifications")
         clickOnTab("Accounts")
+
+        onView(withId(R.id.accountList)).check(matches(hasMinimumChildCount(1)))
+        onView(withText("0xsomething")).check(matches(isDisplayed()))
+
         clickOnTab("Contacts")
 
         //go to user profile
