@@ -108,11 +108,9 @@
     <string name="title_activity_tabbed">TabbedActivity</string>
 
     <string name="section_format">Hello World from section: %1$d</string>
-    <string name="lorem_ipsum_user_name">Lorem Daneel Olivaw</string>
+    <string name="lorem_ipsum_user_name">Lorem R Daneel Olivaw</string>
     <string name="user_profile_screen_title">My Information</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_about">About</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -124,4 +122,28 @@
     <string name="action_view_profile">View</string>
     <string name="user_name_hint">type your name</string>
     <string name="edit_profile_screen_title">Edit profile</string>
+    <string name="title_terms_of_service">Terms of Service</string>
+    <string name="title_mobile_identity">Mobile Identity</string>
+    <string name="title_onboarding_progress">Wrapping up</string>
+    <string name="title_recover_your_identity">Recover Identity</string>
+    <string name="btn_recover_identity">Recover Identity</string>
+    <string name="btn_create_identity">Create Identity</string>
+    <string name="identity_creation_success">Congratulations\nYour identity has been created</string>
+    <string name="identity_creation_error">There was an error.</string>
+    <string name="btn_continue">Continue</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="identity_creation_in_progress">Your identity is being created</string>
+
+    <string name="content_desc_uport_logo">uport logo</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_accept">Accept</string>
+    <string name="title_tos">Terms and Conditions</string>
+    <string name="tos_modified_at">Last modified May 24, 2018</string>
+    <string name="hint_enter_12_word_recovery_phrase">Enter 12 word recovery phrase</string>
+    <string name="title_enter_phrase">Enter recovery phrase</string>
+    <string name="btn_next">Next</string>
+    <string name="recovery_instructions">To recover your account you will need to enter the 12 words of your recovery seed phrase in the order you received them.</string>
+
 </resources>

@@ -17,25 +17,64 @@
 
 package me.uport.android.accounts
 
-
+import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import androidx.navigation.fragment.NavHostFragment
+import kotlinx.android.synthetic.main.fragment_accounts.*
 import me.uport.android.R
+import me.uport.android.interactors.ItemClickListener
+import me.uport.sdk.identity.Account
+import org.koin.android.architecture.ext.viewModel
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context.CLIPBOARD_SERVICE
+import android.widget.Toast
+
 
 /**
-* TODO: add a recyclerview with Accounts that navigate to AccountDetails
+ * A fragment representing a list of [Account]s.
  */
-class AccountsFrag : Fragment() {
+class AccountsFrag : Fragment(), ItemClickListener<Account> {
+
+    private val viewModel: AccountsViewModel by viewModel()
+    private val navController by lazy { NavHostFragment.findNavController(this) }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_accounts, container, false)
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        val adapter = AccountsListAdapter(this)
+        accountList.adapter = adapter
+        accountList.adapter?.notifyDataSetChanged()
+
+        viewModel.accounts.observe(this, Observer { accounts ->
+            //submitList requires a new list so ensure a clone is created every time so I'm calling toMutableList
+            adapter.submitList(accounts?.toMutableList()?.toList())
+        })
+    }
+
+    override fun onItemClick(item: Account) {
+        val params = Bundle().apply {
+            putString(ACCOUNT_HANDLE, item.handle)
+        }
+        navController.navigate(R.id.action_view_account_details, params)
+
+        val clipboard = context?.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+        val clip = ClipData.newPlainText("address", item.deviceAddress)
+        clipboard.primaryClip = clip
+
+        Toast.makeText(context, "address copied to clipboard", Toast.LENGTH_SHORT).show()
+    }
+
+    companion object {
+        private const val ACCOUNT_HANDLE: String = "account_handle"
+    }
 
 }

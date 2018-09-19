@@ -21,6 +21,7 @@ package me.uport.android
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.Espresso.pressBack
 import android.support.test.espresso.action.ViewActions.click
+import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.contrib.DrawerActions
 import android.support.test.espresso.contrib.NavigationViewActions
 import android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
@@ -30,19 +31,25 @@ import android.support.test.rule.ActivityTestRule
 import android.support.test.rule.GrantPermissionRule
 import android.support.test.runner.AndroidJUnit4
 import android.support.v7.widget.RecyclerView.ViewHolder
+import me.uport.android.onboarding.Onboarding
+import me.uport.sdk.Uport
+import me.uport.sdk.identity.Account
 import org.hamcrest.Matchers.allOf
+import org.junit.After
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-
+import org.koin.standalone.inject
+import org.koin.test.KoinTest
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class NavHostActivityTest {
+class NavHostActivityTest : KoinTest {
 
     @Rule
     @JvmField
-    var mActivityTestRule = ActivityTestRule(NavHostActivity::class.java)
+    var activityRule = ActivityTestRule(NavHostActivity::class.java, true, false)
 
     @Rule
     @JvmField
@@ -50,11 +57,32 @@ class NavHostActivityTest {
             GrantPermissionRule.grant(
                     "android.permission.CAMERA")
 
+    @Before
+    fun run_before_every_test() {
+
+        val uport: Uport by inject()
+        val onboarding: Onboarding by inject()
+
+        uport.defaultAccount = Account.blank.copy(deviceAddress = "0xsomething")
+        onboarding.markTosAccepted(true)
+        activityRule.launchActivity(null)
+    }
+
+    @After
+    fun run_after_every_test() {
+        val uPort by inject<Uport>()
+        uPort.defaultAccount?.let { uPort.deleteAccount(it) }
+    }
+
     @Test
     fun walkThroughSomeAppScreens() {
 
         clickOnTab("Verifications")
         clickOnTab("Accounts")
+
+        onView(withId(R.id.accountList)).check(matches(hasMinimumChildCount(1)))
+        onView(withText("0xsomething")).check(matches(isDisplayed()))
+
         clickOnTab("Contacts")
 
         //go to user profile
@@ -107,7 +135,7 @@ class NavHostActivityTest {
 
     }
 
-    fun clickOnTab(tabText: String) {
+    private fun clickOnTab(tabText: String) {
         val matcher = allOf(withText(tabText),
                 isDescendantOfA(withId(R.id.tabs)))
         onView(matcher).perform(click())
