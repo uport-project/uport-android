@@ -58,9 +58,9 @@ class DashboardFrag : Fragment() {
         container.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabs))
         tabs.addOnTabSelectedListener(TabLayout.ViewPagerOnTabSelectedListener(container))
 
-        fab.setOnClickListener { v -> navController.navigate(R.id.action_dashboard_to_scanner) }
-        profile_container.setOnClickListener { v -> navController.navigate(R.id.action_dashboard_to_userProfileScreen) }
-        btn_notifications.setOnClickListener { v -> navController.navigate(R.id.action_dashboard_to_notifications) }
+        fab.setOnClickListener { _ -> navController.navigate(R.id.action_dashboard_to_scanner) }
+        profile_container.setOnClickListener { _ -> navController.navigate(R.id.action_dashboard_to_userProfileScreen) }
+        btn_notifications.setOnClickListener { _ -> navController.navigate(R.id.action_dashboard_to_notifications) }
     }
 
     /**

@@ -44,7 +44,7 @@ class UserProfileFrag : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        profile_container.setOnClickListener({ v -> navController.navigate(R.id.action_profile_to_edit_profile) })
+        profile_container.setOnClickListener { _ -> navController.navigate(R.id.action_profile_to_edit_profile) }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

@@ -24,6 +24,7 @@ import android.databinding.ObservableBoolean
 import android.databinding.ObservableInt
 import android.view.View
 import androidx.navigation.Navigation
+import kotlinx.coroutines.experimental.GlobalScope
 import kotlinx.coroutines.experimental.launch
 import me.uport.android.R
 import me.uport.sdk.Uport
@@ -40,7 +41,7 @@ class OnboardingProgressViewModel(
     val titleText = ObservableInt().apply { set(R.string.title_mobile_identity) }
 
     fun requestNewAccount(seed: String? = null) {
-        launch {
+        GlobalScope.launch {
             try {
                 isLoading.set(true)
                 progressText.set(R.string.identity_creation_in_progress)
