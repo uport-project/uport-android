@@ -17,18 +17,17 @@
 
 package me.uport.android.profile
 
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.*
 import androidx.navigation.fragment.NavHostFragment
 import kotlinx.android.synthetic.main.fragment_dashboard.*
-
 import me.uport.android.R
+import org.koin.android.ext.android.inject
 
 class UserProfileFrag : Fragment() {
 
-    private lateinit var viewModel: UserProfileViewModel
+    private val viewModel: UserProfileViewModel by inject()
     private val navController by lazy { NavHostFragment.findNavController(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,12 +44,6 @@ class UserProfileFrag : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         profile_container.setOnClickListener { _ -> navController.navigate(R.id.action_profile_to_edit_profile) }
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(UserProfileViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater) {

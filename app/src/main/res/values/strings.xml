@@ -145,5 +145,7 @@
     <string name="title_enter_phrase">Enter recovery phrase</string>
     <string name="btn_next">Next</string>
     <string name="recovery_instructions">To recover your account you will need to enter the 12 words of your recovery seed phrase in the order you received them.</string>
+    <string name="btn_qr_code_description">Share your contact through a QR code</string>
+    <string name="btn_share_contact_description">Share your contact</string>
 
 </resources>

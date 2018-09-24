@@ -24,6 +24,7 @@ import me.uport.android.onboarding.Onboarding
 import me.uport.android.onboarding.Onboarding.Companion.ONBOARDING_PREFS
 import me.uport.android.onboarding.OnboardingProgressViewModel
 import me.uport.android.onboarding.RecoverSeedViewModel
+import me.uport.android.profile.UserProfileViewModel
 import me.uport.sdk.Uport
 import org.koin.android.architecture.ext.viewModel
 import org.koin.android.ext.koin.androidApplication
@@ -47,6 +48,10 @@ val dashboardModule = applicationContext {
     viewModel { AccountsViewModel(get()) }
 }
 
+val userModule = applicationContext {
+    viewModel { UserProfileViewModel() }
+}
+
 val coreModule = applicationContext {
 
     bean(ONBOARDING_PREFS) { androidApplication().getSharedPreferences(ONBOARDING_PREFS, MODE_PRIVATE) }
@@ -55,4 +60,4 @@ val coreModule = applicationContext {
 
 }
 
-val coreApp = listOf(coreModule, uportSDK, onboardingModule, dashboardModule)
+val coreApp = listOf(coreModule, uportSDK, onboardingModule, dashboardModule, userModule)
