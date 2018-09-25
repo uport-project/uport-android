@@ -49,7 +49,7 @@ val dashboardModule = applicationContext {
 }
 
 val userModule = applicationContext {
-    viewModel { UserProfileViewModel() }
+    viewModel { UserProfileViewModel(androidApplication()) }
 }
 
 val coreModule = applicationContext {

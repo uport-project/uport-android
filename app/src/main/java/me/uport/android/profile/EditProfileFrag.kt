@@ -17,28 +17,30 @@
 
 package me.uport.android.profile
 
-import android.arch.lifecycle.ViewModelProviders
+import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import me.uport.android.R
+import me.uport.android.databinding.FragmentEditProfileBinding
+import org.koin.android.architecture.ext.viewModel
 
 class EditProfileFrag : Fragment() {
 
-    private lateinit var viewModel: UserProfileViewModel
+    private val userModel: UserProfileViewModel by viewModel()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_edit_profile, container, false)
-    }
+        val binding: FragmentEditProfileBinding = DataBindingUtil.inflate(
+                inflater,
+                R.layout.fragment_edit_profile,
+                container, false)
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(UserProfileViewModel::class.java)
-        // TODO: Use the ViewModel
+        binding.setLifecycleOwner(this)
+        binding.userModel = userModel
+        return binding.root
     }
 
 }
