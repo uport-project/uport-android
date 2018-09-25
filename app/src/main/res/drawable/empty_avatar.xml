@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2018. uPort
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--<item android:drawable="@drawable/logo_avatar_empty_state" />-->
+    <item>
+        <shape>
+            <corners android:radius="10dp" />
+            <solid android:color="#ffffff" />
+            <size
+                android:width="96dp"
+                android:height="96dp" />
+        </shape>
+    </item>
+    <item
+        android:drawable="@drawable/base_empty_avatar"
+        android:gravity="center|clip_vertical|clip_horizontal"
+        android:left="-10dp"
+        android:top="-10dp"
+        android:bottom="-10dp"
+        android:right="-10dp"
+        />
+
+</layer-list>
