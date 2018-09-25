@@ -29,7 +29,7 @@ class UserProfileViewModel(application: Application) : AndroidViewModel(applicat
 
     private val prefs = application.getSharedPreferences("profile_data", MODE_PRIVATE)
 
-    val userProperties = MutableLiveData<Map<String, String>>()
+    val properties = MutableLiveData<Map<String, String>>()
             .apply {
                 val map = emptyMap<String, String>().toMutableMap()
                 prefs.all.forEach { (k, v) ->
@@ -59,28 +59,29 @@ class UserProfileViewModel(application: Application) : AndroidViewModel(applicat
             }
 
     /**
-     * exposes userProperties["username"] for bidirectional data-binding
+     * exposes `properties[NAME]` for bidirectional data-binding
      */
     var editableName: String
         get() {
-            val value = userProperties.value!![username] ?: ""
+            val value = properties.value!![NAME] ?: ""
             println("getting name=$value")
             return value
         }
         set(newValue) {
-            val newMap = userProperties.value!!.toMutableMap().apply {
-                this[username] = newValue
+            val newMap = properties.value!!.toMutableMap().apply {
+                this[NAME] = newValue
             }
             println("setting name=$newValue")
-            userProperties.value = newMap
+            properties.value = newMap
         }
 
 
     companion object {
 
-        //a few usual properties
-        const val avatarUrl = "avatarUrl"
-        const val username = "username"
-        const val email = "email"
+        //some common properties
+        const val AVATAR_URL = "avatarUrl"
+        const val NAME = "username"
+        const val EMAIL = "email"
+        const val PHONE = "phone"
     }
 }

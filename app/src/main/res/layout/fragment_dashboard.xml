@@ -38,7 +38,7 @@
                 android:contentDescription="@string/avatar_description"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@{userModel.userProperties[userModel.avatarUrl]}"
+                app:srcCompat="@{userModel.properties[userModel.AVATAR_URL]}"
                 tools:src="@drawable/empty_avatar" />
 
             <TextView
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="@{userModel.userProperties[userModel.username]}"
+                android:text="@{userModel.properties[userModel.NAME]}"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
                 app:layout_constraintBottom_toBottomOf="@+id/profile_image"
                 app:layout_constraintEnd_toEndOf="parent"

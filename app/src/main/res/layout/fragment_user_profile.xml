@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <data>
+
         <variable
-            name="model"
+            name="userModel"
             type="me.uport.android.profile.UserProfileViewModel" />
     </data>
 
@@ -33,7 +35,7 @@
                 android:contentDescription="@string/avatar_description"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@{model.userProperties[model.avatarUrl]}"
+                app:srcCompat="@{userModel.properties[userModel.AVATAR_URL]}"
                 tools:src="@drawable/empty_avatar" />
 
             <TextView
@@ -42,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="@{model.userProperties[model.username]}"
+                android:text="@{userModel.properties[userModel.NAME]}"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
                 app:layout_constraintBottom_toBottomOf="@+id/profile_image"
                 app:layout_constraintEnd_toEndOf="parent"

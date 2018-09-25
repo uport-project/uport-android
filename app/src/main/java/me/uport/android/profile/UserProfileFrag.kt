@@ -29,7 +29,7 @@ import org.koin.android.architecture.ext.viewModel
 
 class UserProfileFrag : Fragment() {
 
-    private val viewModel: UserProfileViewModel by viewModel()
+    private val userModel: UserProfileViewModel by viewModel()
     private val navController by lazy { NavHostFragment.findNavController(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,7 +45,7 @@ class UserProfileFrag : Fragment() {
                 container, false)
 
         binding.setLifecycleOwner(this)
-        binding.model = viewModel
+        binding.userModel = userModel
         return binding.root
     }
 
