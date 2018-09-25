@@ -17,17 +17,19 @@
 
 package me.uport.android.profile
 
+import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.*
 import androidx.navigation.fragment.NavHostFragment
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 import me.uport.android.R
-import org.koin.android.ext.android.inject
+import me.uport.android.databinding.FragmentUserProfileBinding
+import org.koin.android.architecture.ext.viewModel
 
 class UserProfileFrag : Fragment() {
 
-    private val viewModel: UserProfileViewModel by inject()
+    private val viewModel: UserProfileViewModel by viewModel()
     private val navController by lazy { NavHostFragment.findNavController(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +39,14 @@ class UserProfileFrag : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_user_profile, container, false)
+        val binding: FragmentUserProfileBinding = DataBindingUtil.inflate(
+                inflater,
+                R.layout.fragment_user_profile,
+                container, false)
+
+        binding.setLifecycleOwner(this)
+        binding.model = viewModel
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

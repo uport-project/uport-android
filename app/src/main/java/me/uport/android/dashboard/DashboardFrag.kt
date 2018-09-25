@@ -17,6 +17,7 @@
 
 package me.uport.android.dashboard
 
+import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
@@ -24,17 +25,20 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.view.*
 import androidx.navigation.fragment.NavHostFragment
-import kotlinx.android.synthetic.main.fragment_dashboard.*
 import me.uport.android.R
 import me.uport.android._dummy.UnimplementedFrag
 import me.uport.android.accounts.AccountsFrag
 import me.uport.android.contacts.ContactsFrag
+import me.uport.android.databinding.FragmentDashboardBinding
+import me.uport.android.profile.UserProfileViewModel
 import me.uport.android.verifications.VerificationsFrag
 import org.koin.android.architecture.ext.viewModel
 
 class DashboardFrag : Fragment() {
 
     private val viewModel: DashboardViewModel by viewModel()
+    private val userModel: UserProfileViewModel by viewModel()
+
     private val navController by lazy { NavHostFragment.findNavController(this) }
     private var tabPagerAdapter: TabPagerAdapter? = null
 
@@ -45,22 +49,25 @@ class DashboardFrag : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_dashboard, container, false)
-    }
+        val binding: FragmentDashboardBinding = DataBindingUtil.inflate(
+                inflater,
+                R.layout.fragment_dashboard,
+                container, false)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        // TODO: Use the ViewModel - determine default user, accounts, claims, contacts and bind the appropriate views to the viewmodel
+        binding.setLifecycleOwner(this)
+        binding.userModel = userModel
 
         tabPagerAdapter = TabPagerAdapter(childFragmentManager)
 
-        container.adapter = tabPagerAdapter
-        container.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabs))
-        tabs.addOnTabSelectedListener(TabLayout.ViewPagerOnTabSelectedListener(container))
+        binding.container.adapter = tabPagerAdapter
+        binding.container.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(binding.tabs))
+        binding.tabs.addOnTabSelectedListener(TabLayout.ViewPagerOnTabSelectedListener(binding.container))
 
-        fab.setOnClickListener { _ -> navController.navigate(R.id.action_dashboard_to_scanner) }
-        profile_container.setOnClickListener { _ -> navController.navigate(R.id.action_dashboard_to_userProfileScreen) }
-        btn_notifications.setOnClickListener { _ -> navController.navigate(R.id.action_dashboard_to_notifications) }
+        binding.fab.setOnClickListener { _ -> navController.navigate(R.id.action_dashboard_to_scanner) }
+        binding.profileContainer.setOnClickListener { _ -> navController.navigate(R.id.action_dashboard_to_userProfileScreen) }
+        binding.btnNotifications.setOnClickListener { _ -> navController.navigate(R.id.action_dashboard_to_notifications) }
+
+        return binding.root
     }
 
     /**

@@ -28,9 +28,15 @@ import android.widget.TextView
 
 
 @BindingAdapter("srcCompat")
-fun ImageView.setImageUri(imageUri: String?) = imageUri
-        ?.let { setImageURI(Uri.parse(it)) }
-        ?: setImageURI(null)
+fun ImageView.setImageUri(imageUri: String?) = imageUri.orEmpty()
+        .let {
+            if (it.isEmpty()) {
+                setImageDrawable(this.resources.getDrawable(R.drawable.empty_avatar, null))
+            } else {
+                //TODO: check if the string is an IPFS coordinate first
+                setImageURI(Uri.parse(it))
+            }
+        }
 
 @BindingAdapter("srcCompat")
 fun ImageView.setImageUri(imageUri: Uri) = setImageURI(imageUri)

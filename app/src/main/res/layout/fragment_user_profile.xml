@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
-
     <data>
-
         <variable
             name="model"
             type="me.uport.android.profile.UserProfileViewModel" />
@@ -33,9 +31,10 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:contentDescription="@string/avatar_description"
-                android:src="@android:drawable/ic_menu_myplaces"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@{model.userProperties[model.avatarUrl]}"
+                tools:src="@drawable/empty_avatar" />
 
             <TextView
                 android:id="@+id/profile_name"
@@ -43,12 +42,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="@string/lorem_ipsum_user_name"
+                android:text="@{model.userProperties[model.username]}"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
                 app:layout_constraintBottom_toBottomOf="@+id/profile_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/profile_image"
-                app:layout_constraintTop_toTopOf="@+id/profile_image" />
+                app:layout_constraintTop_toTopOf="@+id/profile_image"
+                tools:text="@string/lorem_ipsum_user_name" />
         </android.support.constraint.ConstraintLayout>
 
         <ImageButton

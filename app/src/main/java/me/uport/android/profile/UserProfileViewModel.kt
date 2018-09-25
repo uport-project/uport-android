@@ -21,7 +21,19 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel;
 
 class UserProfileViewModel : ViewModel() {
-    val avatarUrl = MutableLiveData<String>().apply { value = "" }
-    val username = MutableLiveData<String>().apply { value = "" }
-    val userProperties = MutableLiveData<Map<String, String>>().apply { value = emptyMap() }
+    val userProperties = MutableLiveData<Map<String, String>>().apply {
+        value = mapOf(
+                avatarUrl to "",
+                username to "Lorem R Daneel",
+                "email" to "lorem.daneel@foundation.universe",
+                "location" to "Lorem Ipsum Trantor City"
+        )
+    }
+
+    companion object {
+        //a few usual properties
+        const val avatarUrl = "avatarUrl"
+        const val username = "username"
+        const val email = "email"
+    }
 }
