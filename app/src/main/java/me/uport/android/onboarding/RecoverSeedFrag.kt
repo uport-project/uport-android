@@ -30,8 +30,8 @@ import android.view.inputmethod.EditorInfo
 import androidx.navigation.fragment.NavHostFragment
 import me.uport.android.R
 import me.uport.android.databinding.FragmentRecoverSeedBinding
-import org.koin.android.architecture.ext.sharedViewModel
-import org.koin.android.architecture.ext.viewModel
+import org.koin.android.viewmodel.ext.android.sharedViewModel
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class RecoverSeedFrag : Fragment() {
 

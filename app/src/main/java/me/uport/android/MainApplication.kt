@@ -25,7 +25,7 @@ class MainApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-       startKoin(coreApp)
+        startKoin(this, coreApp)
 
     }
 }

@@ -26,7 +26,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.NavHostFragment
 import kotlinx.android.synthetic.main.fragment_create_or_recover.*
 import me.uport.android.R
-import org.koin.android.architecture.ext.sharedViewModel
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 /**
  * Shows the option to create a new identity or recover an existing one

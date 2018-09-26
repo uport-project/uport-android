@@ -17,22 +17,22 @@
 
 package me.uport.android.profile
 
+import android.app.Activity
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import me.uport.android.R
 import me.uport.android.databinding.FragmentEditProfileBinding
-import org.koin.android.architecture.ext.viewModel
-import android.app.Activity
-import android.view.inputmethod.InputMethodManager
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 
 class EditProfileFrag : Fragment() {
 
-    private val userModel: UserProfileViewModel by viewModel()
+    private val userModel: UserProfileViewModel by sharedViewModel()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

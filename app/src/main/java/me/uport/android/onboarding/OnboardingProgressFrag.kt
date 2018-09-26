@@ -25,7 +25,7 @@ import android.view.View
 import android.view.ViewGroup
 import me.uport.android.R
 import me.uport.android.databinding.FragmentOnboardingProgressBinding
-import org.koin.android.architecture.ext.sharedViewModel
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 class OnboardingProgressFrag : Fragment() {
 

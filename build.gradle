@@ -15,7 +15,7 @@ buildscript {
         lifecycle_version = "1.1.1"
         navigation_version = "1.0.0-alpha06"
 
-        koin_version = "0.9.3"
+        koin_version = "1.0.1"
 
         uport_sdk_version = "v0.2.2"
 

@@ -86,7 +86,8 @@ dependencies {
             "android.arch.navigation:navigation-ui:$navigation_version",
 
             "org.koin:koin-android:$koin_version",
-            "org.koin:koin-android-architecture:$koin_version",
+            "org.koin:koin-android-scope:$koin_version",
+            "org.koin:koin-android-viewmodel:$koin_version",
     )
 
     testImplementation(

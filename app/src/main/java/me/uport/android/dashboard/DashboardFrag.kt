@@ -32,12 +32,13 @@ import me.uport.android.contacts.ContactsFrag
 import me.uport.android.databinding.FragmentDashboardBinding
 import me.uport.android.profile.UserProfileViewModel
 import me.uport.android.verifications.VerificationsFrag
-import org.koin.android.architecture.ext.viewModel
+import org.koin.android.viewmodel.ext.android.sharedViewModel
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class DashboardFrag : Fragment() {
 
     private val viewModel: DashboardViewModel by viewModel()
-    private val userModel: UserProfileViewModel by viewModel()
+    private val userModel: UserProfileViewModel by sharedViewModel()
 
     private val navController by lazy { NavHostFragment.findNavController(this) }
     private var tabPagerAdapter: TabPagerAdapter? = null

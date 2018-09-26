@@ -25,11 +25,11 @@ import androidx.navigation.fragment.NavHostFragment
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 import me.uport.android.R
 import me.uport.android.databinding.FragmentUserProfileBinding
-import org.koin.android.architecture.ext.viewModel
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 class UserProfileFrag : Fragment() {
 
-    private val userModel: UserProfileViewModel by viewModel()
+    private val userModel: UserProfileViewModel by sharedViewModel()
     private val navController by lazy { NavHostFragment.findNavController(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {

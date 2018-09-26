@@ -26,37 +26,37 @@ import me.uport.android.onboarding.OnboardingProgressViewModel
 import me.uport.android.onboarding.RecoverSeedViewModel
 import me.uport.android.profile.UserProfileViewModel
 import me.uport.sdk.Uport
-import org.koin.android.architecture.ext.viewModel
 import org.koin.android.ext.koin.androidApplication
-import org.koin.dsl.module.applicationContext
+import org.koin.android.viewmodel.ext.koin.viewModel
+import org.koin.dsl.module.module
 
-val uportSDK = applicationContext {
-    bean { Uport.Configuration().setApplicationContext(androidApplication()) }
-    bean {
+val uportSDK = module {
+    single { Uport.Configuration().setApplicationContext(androidApplication()) }
+    single {
         Uport.initialize(get())
         Uport
     }
 }
 
-val onboardingModule = applicationContext {
+val onboardingModule = module {
     viewModel { OnboardingProgressViewModel(androidApplication(), get()) }
     viewModel { RecoverSeedViewModel() }
 }
 
-val dashboardModule = applicationContext {
+val dashboardModule = module {
     viewModel { DashboardViewModel() }
     viewModel { AccountsViewModel(get()) }
 }
 
-val userModule = applicationContext {
+val userModule = module {
     viewModel { UserProfileViewModel(androidApplication()) }
 }
 
-val coreModule = applicationContext {
+val coreModule = module {
 
-    bean(ONBOARDING_PREFS) { androidApplication().getSharedPreferences(ONBOARDING_PREFS, MODE_PRIVATE) }
+    single(ONBOARDING_PREFS) { androidApplication().getSharedPreferences(ONBOARDING_PREFS, MODE_PRIVATE) }
 
-    bean { Onboarding(get()) }
+    single { Onboarding(get()) }
 
 }
 
