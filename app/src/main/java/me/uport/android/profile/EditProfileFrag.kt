@@ -26,6 +26,9 @@ import android.view.ViewGroup
 import me.uport.android.R
 import me.uport.android.databinding.FragmentEditProfileBinding
 import org.koin.android.architecture.ext.viewModel
+import android.app.Activity
+import android.view.inputmethod.InputMethodManager
+
 
 class EditProfileFrag : Fragment() {
 
@@ -40,6 +43,15 @@ class EditProfileFrag : Fragment() {
 
         binding.setLifecycleOwner(this)
         binding.userModel = userModel
+
+        //oh android, why do I need to tell you to do this?
+        binding.profileName.onFocusChangeListener = View.OnFocusChangeListener { textBox: View, hasFocus: Boolean ->
+            if (!hasFocus) {
+                val imm = textBox.context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(textBox.windowToken, 0)
+            }
+        }
+
         return binding.root
     }
 

@@ -50,7 +50,7 @@ class UserProfileViewModel(application: Application) : AndroidViewModel(applicat
 
                 //subscribe to prefs
                 prefs.registerOnSharedPreferenceChangeListener { preferences, key ->
-                    val newValue = preferences.getString(key, "")
+                    val newValue = preferences.getString(key, "")!!
                     val newMap = it.value!!.toMutableMap().apply {
                         this[key] = newValue
                     }
