@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlinx-serialization'
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -70,7 +69,6 @@ dependencies {
 
     implementation(
             "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
-            "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$kotlin_serialization_version",
 
             "com.android.support.constraint:constraint-layout:$constraint_layout_version",
             "com.android.support:recyclerview-v7:$support_lib_version",
