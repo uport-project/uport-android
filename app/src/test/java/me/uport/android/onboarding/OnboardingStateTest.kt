@@ -32,10 +32,10 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.koin.android.ext.koin.with
-import org.koin.dsl.module.applicationContext
-import org.koin.standalone.StandAloneContext.closeKoin
+import org.koin.dsl.module.module
 import org.koin.standalone.StandAloneContext.loadKoinModules
 import org.koin.standalone.StandAloneContext.startKoin
+import org.koin.standalone.StandAloneContext.stopKoin
 import org.koin.standalone.inject
 import org.koin.test.KoinTest
 import org.mockito.junit.MockitoJUnitRunner
@@ -47,14 +47,14 @@ class OnboardingStateTest : KoinTest {
     fun `run before every test`() {
         startKoin(coreApp) with prepareMockApplication()
 
-        loadKoinModules(listOf(applicationContext {
-            bean<Any> { inMemoryPrefs }
+        loadKoinModules(listOf(module(override = true) {
+            single<Any> { inMemoryPrefs }
         }))
     }
 
     @After
     fun `run after every test`() {
-        closeKoin()
+        stopKoin()
     }
 
     @Test
@@ -76,10 +76,10 @@ class OnboardingStateTest : KoinTest {
     @Test
     fun `onboarding is final after uport default account exists`() {
 
-        loadKoinModules(listOf(applicationContext {
+        loadKoinModules(listOf(module(override = true) {
             val uportSDKMock = spy<Uport>()
             whenever(uportSDKMock.defaultAccount).thenReturn(Account.blank)
-            bean { uportSDKMock }
+            single { uportSDKMock }
         }))
 
         val tested: Onboarding by inject()

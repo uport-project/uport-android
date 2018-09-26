@@ -18,14 +18,15 @@
 package me.uport.android
 
 import android.app.Application
-import org.koin.android.ext.android.startKoin
+import org.koin.android.ext.koin.with
+import org.koin.standalone.StandAloneContext.startKoin
 
 class MainApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
 
-        startKoin(this, coreApp)
+        startKoin(coreApp) with this
 
     }
 }
