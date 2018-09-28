@@ -17,11 +17,9 @@
 
 package me.uport.android
 
-import android.app.Application
 import me.uport.android.fakes.prepareMockApplication
 import org.junit.Test
-import org.koin.android.ext.koin.with
-import org.koin.standalone.StandAloneContext.startKoin
+import org.koin.dsl.module.module
 import org.koin.standalone.StandAloneContext.stopKoin
 import org.koin.test.KoinTest
 import org.koin.test.checkModules
@@ -31,14 +29,11 @@ class DependencyDryRun : KoinTest {
     @Test
     fun `should do a dry run`() {
 
-        val ctx: Application by lazy { prepareMockApplication() }
-        startKoin(coreApp) with ctx
+        val mockedAndroidContext = module {
+            single { prepareMockApplication() }
+        }
 
-        //this fails using koin 1.0.1
-        //check https://github.com/InsertKoinIO/koin/issues/232
-        // and perhaps https://github.com/InsertKoinIO/koin/issues/241
-
-        checkModules(coreApp)
+        checkModules(coreApp + mockedAndroidContext)
 
         stopKoin()
     }
