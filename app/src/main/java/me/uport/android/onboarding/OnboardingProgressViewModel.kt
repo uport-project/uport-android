@@ -24,8 +24,8 @@ import android.databinding.ObservableBoolean
 import android.databinding.ObservableInt
 import android.view.View
 import androidx.navigation.Navigation
-import kotlinx.coroutines.experimental.GlobalScope
-import kotlinx.coroutines.experimental.launch
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import me.uport.android.R
 import me.uport.sdk.Uport
 import me.uport.sdk.core.Networks
@@ -46,7 +46,7 @@ class OnboardingProgressViewModel(
                 isLoading.set(true)
                 progressText.set(R.string.identity_creation_in_progress)
 
-                uportSDK.createAccount(Networks.rinkeby, seed)
+                uportSDK.createAccount(Networks.rinkeby.networkId, seed)
 
                 isLoading.set(false)
                 progressText.set(R.string.identity_creation_success)
