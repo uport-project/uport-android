@@ -1,21 +1,5 @@
-## This app is in early development and currently unusable for most people. ##
+This project is no longer maintained.
 
-uPort android
-=============
-
-This is the place where uPort mobile gets rewritten into a pure android app.
-
-## Build
-
-### Requirements
-
-* Android Studio 3.2+
-* android SDK (normally bundled with Android studio) with API 27 downloaded from SDK manager
-
-
-### Build / Run
-
-* From Android Studio, using the default `app` run config
-* using the bundled gradle wrapper:
-    `./gradlew assembleDebug` (use `installDebug` to reinstall on device)
-
+If you have a use-case that requires rebooting this repository, 
+please post to [veramo-discussions](https://github.com/uport-project/veramo/discussions/)
+or send us a message at veramo-hello@mesh.xyz
